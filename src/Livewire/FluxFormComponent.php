@@ -48,7 +48,7 @@ class FluxFormComponent extends Component
         $this->event ??= $event;
         $this->data = $event_data;
 
-        $reflection = new ReflectionClass($this->event());
+        $reflection = new ReflectionClass($this->event);
 
         $config = $reflection->getAttributes(EventForm::class)[0]->getArguments();
         $default = (array) $reflection->getAttributes(EventForm::class)[0]->newInstance();
@@ -161,7 +161,7 @@ class FluxFormComponent extends Component
     {
         $this->validate($this->rules);
 
-        $reflection = new ReflectionClass($this->event());
+        $reflection = new ReflectionClass($this->event);
         collect($reflection->getProperties())
             ->filter(fn(ReflectionProperty $property): bool => ! empty($property->getAttributes(EventInput::class)))
             ->each(function (ReflectionProperty $property): void {
