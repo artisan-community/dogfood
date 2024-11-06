@@ -19,10 +19,17 @@
 	},
 	"require-dev": {
 		"hirethunk/verbs": "^0.6.4",
-		"illuminate/support": "^11.30"
+		"illuminate/support": "^11.30",
+		"phpstan/phpstan": "^1.12",
+		"livewire/flux": "^1.0",
+		"livewire/flux-pro": "^1.0"
 	},
 	"suggest": {
-		"hirethunk/verbs": "If you don't know, then this package is not for you. dummy."
+		"hirethunk/verbs": "If you don't know, then this package is not for you. dummy.",
+		"livewire/flux": "If you don't know, then this package is not for you. dummy."
+	},
+	"scripts": {
+		"stan": "@php vendor/bin/phpstan analyse --level=5 src tests"
 	},
 	"autoload": {
 		"psr-4": {
@@ -37,5 +44,11 @@
 				"ArtisanBuild\\VerbsFlux\\Providers\\VerbsFluxServiceProvider"
 			]
 		}
-	}
+	},
+	"repositories": {
+        "flux-pro": {
+            "type": "composer",
+            "url": "https://composer.fluxui.dev"
+        }
+    }
 }
