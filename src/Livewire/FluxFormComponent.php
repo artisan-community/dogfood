@@ -10,6 +10,9 @@ use ArtisanBuild\VerbsFlux\Contracts\RedirectsOnSuccess;
 use ArtisanBuild\VerbsFlux\Enums\InputTypes;
 use BackedEnum;
 use Flux\Flux;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use ReflectionClass;
@@ -45,7 +48,7 @@ class FluxFormComponent extends Component
         $this->event ??= $event;
         $this->data = $event_data;
 
-        $reflection = new ReflectionClass(new $this->event());
+        $reflection = new ReflectionClass($this->event());
 
         $config = $reflection->getAttributes(EventForm::class)[0]->getArguments();
         $default = (array) $reflection->getAttributes(EventForm::class)[0]->newInstance();
@@ -98,11 +101,11 @@ class FluxFormComponent extends Component
         ) {
             $min = $this->datetime_minmax_parser($data['params']['min']);
             $datetime = match ($min['unit']) {
-                'now' => now(),
-                'days' => now()->addDays($min['value']),
-                'weeks' => now()->addWeeks($min['value']),
-                'months' => now()->addMonths($min['value']),
-                'years' => now()->addYears($min['value']),
+                'now' => Date::now(),
+                'days' => Date::now()->addDays($min['value']),
+                'weeks' => Date::now()->addWeeks($min['value']),
+                'months' => Date::now()->addMonths($min['value']),
+                'years' => Date::now()->addYears($min['value']),
                 default => throw new RuntimeException('Invalid datetime min unit'),
             };
             $data['params']['min'] = $datetime->format('Y-m-d\TH:i');
@@ -114,11 +117,11 @@ class FluxFormComponent extends Component
         ) {
             $max = $this->datetime_minmax_parser($data['params']['max']);
             $datetime = match ($max['unit']) {
-                'now' => now(),
-                'days' => now()->addDays($max['value']),
-                'weeks' => now()->addWeeks($max['value']),
-                'months' => now()->addMonths($max['value']),
-                'years' => now()->addYears($max['value']),
+                'now' => Date::now(),
+                'days' => Date::now()->addDays($max['value']),
+                'weeks' => Date::now()->addWeeks($max['value']),
+                'months' => Date::now()->addMonths($max['value']),
+                'years' => Date::now()->addYears($max['value']),
                 default => throw new RuntimeException('Invalid datetime max unit'),
             };
             $data['params']['max'] = $datetime->format('Y-m-d\TH:i');
@@ -182,12 +185,14 @@ class FluxFormComponent extends Component
 
         $success = $this->event::commit($this->data);
 
+        // @phpstan-ignore-next-line
         Flux::toast(text: data_get($this->config, 'success'), variant: 'success');
         $this->dispatch('saved');
+        // @phpstan-ignore-next-line
         Flux::modals()->close();
 
         if (RedirectsOnSuccess::class === data_get($this->config, 'on_success')) {
-            $url = app(RedirectsOnSuccess::class)($this->event, $success);
+            $url = App::make(RedirectsOnSuccess::class)($this->event, $success);
             if (null !== $url) {
                 $this->redirect(url: $url, navigate: true);
             }
@@ -227,7 +232,7 @@ class FluxFormComponent extends Component
 
     public function render()
     {
-        return view('verbs-flux::livewire.flux-form-component');
+        return View::make('verbs-flux::livewire.flux-form-component');
     }
 
     /**

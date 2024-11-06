@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace ArtisanBuild\VerbsFlux\Controllers;
 
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Foundation\Application;
-use Illuminate\View\View;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\Facades\View;
+use Illuminate\Contracts\View\View as ViewContract;
 
 class AnonymousComponentController
 {
-    public function __invoke(): Application|\Illuminate\Contracts\View\View|Factory|View|null
+    public function __invoke(): Application|ViewContract|Factory|null
     {
-        return view('verbs-flux::anonymous');
+        return View::make('verbs-flux::anonymous');
     }
 }
