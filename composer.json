@@ -1,8 +1,8 @@
 {
     "name": "artisan-build/kibble",
     "description": "",
-    "keywords": ["framework", "laravel", "laravel zero", "console", "cli"],
-    "homepage": "https://laravel-zero.com",
+    "keywords": ["packages", "composer", "console", "cli"],
+    "homepage": "https://community.artisan.build",
     "type": "project",
     "license": "MIT",
     "support": {
@@ -17,7 +17,8 @@
     ],
     "require": {
         "php": "^8.3.0",
-        "laravel-zero/framework": "^11.0.2"
+        "laravel-zero/framework": "^11.0.2",
+        "laravel/prompts": "^0.3.2"
     },
     "require-dev": {
         "laravel/pint": "^1.18.1",
@@ -46,5 +47,5 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
-    "bin": ["application"]
+    "bin": ["kibble"]
 }

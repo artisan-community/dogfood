@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "kibble/index.md",
                 "mode": "source",
                 "source": false
               },
@@ -164,6 +164,13 @@
   },
   "active": "667a551b1f1bf245",
   "lastOpenFiles": [
-    "index.md"
+    "index.md",
+    "kibble/index.md",
+    "kibble",
+    "_templates/memberware-index.md",
+    "_templates/memberware-readme.md",
+    "_templates/oss-index.md",
+    "_templates/oss-readme.md",
+    "_templates"
   ]
 }
