@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace ArtisanBuild\Bench\Console\Commands;
 
-use ArtisanBuild\Bench\Actions\MakeCommit;
-use ArtisanBuild\Bench\Actions\PushChanges;
-use ArtisanBuild\Bench\Actions\StageAllChangedFiles;
+use ArtisanBuild\Bench\Git\MakeCommit;
+use ArtisanBuild\Bench\Git\PushChanges;
+use ArtisanBuild\Bench\Git\StageAllChangedFiles;
 use Exception;
 use Illuminate\Console\Command;
 
@@ -37,7 +37,7 @@ class Commit extends Command
         $message = $this->ask('What did you do?');
 
         // Keep GitHub Actions from running on commits that aren't ready for review
-        if ( ! $this->option('finished')) {
+        if (! $this->option('finished')) {
             $message .= ' #nodeploy';
         }
 

@@ -28,8 +28,9 @@ class FreshId extends Command
      */
     public function handle()
     {
-        if ('ulid' === $this->argument('type')) {
+        if ($this->argument('type') === 'ulid') {
             echo mb_strtolower(Str::ulid()->toString());
+
             return self::SUCCESS;
         }
 

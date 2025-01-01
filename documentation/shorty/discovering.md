@@ -1,0 +1,6 @@
+# Discovering Short Codes
+
+If, for whatever reason, you do not want to have all of your custom short codes kept in a single directory, you can turn on Short Code Discovery in the configuration. This feature allows you to create shot codes anywhere in your file structure and even use short codes from packages that might provide them. When using the short code discovery feature, it is important to remember to add the `AsShortCode()` attribute to all of your short code classes. This attribute is optional if the class is within the configured short codes directory.
+
+>[!Warning]
+> Because short code discovery uses Reflection and digs through your entire project, including vendor folders, looking for classes decorated with `AsShortCode()`, we cache the result. So when using this feature, it is important to clear your cache after adding, removing, or changing the name of a short code. If you don't want to clear the whole cache, you can force a discovery and fresh cache by running `php artisan shorty:discover`

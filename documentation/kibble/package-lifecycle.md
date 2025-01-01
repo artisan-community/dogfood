@@ -1,0 +1,3 @@
+# The Lifecycle of a Package at Artisan Build
+
+Sometimes we identify a need in the Laravel community that could be easily met with an open-source package. In those cases, we do what most open-source maintainers do. We create the package, put it up on GitHub, and add it to Packagist. However, most of the packages that we have on GitHub and in Packagist started off as features within one of our commercial applications.

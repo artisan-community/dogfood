@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ArtisanBuild\Bench\Actions;
+namespace ArtisanBuild\Bench\Database\PrebuiltData\Sqlite;
 
 use Illuminate\Support\Facades\File;
 

@@ -19,11 +19,13 @@
     ],
     "require": {
         "php": "^8.2",
+        "glhd/bits": "*",
         "laravel/prompts": "*",
         "spatie/laravel-package-tools": "^1.16",
         "illuminate/contracts": "^10.0||^11.0"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest",
         "laravel/pint": "^1.14",
         "nunomaduro/collision": "^8.1.1||^7.10.0",
         "larastan/larastan": "^2.9",
@@ -39,7 +41,7 @@
     "autoload": {
         "psr-4": {
             "ArtisanBuild\\Bench\\": "src/",
-            "ArtisanBuild\\Bench\\Database\\Factories\\": "database/factories/"
+            "ArtisanBuild\\Bench\\Test\\": "tests/"
         },
         "files": [
             "src/Functions.php"
@@ -64,10 +66,15 @@
             "@composer run build",
             "@php vendor/bin/testbench serve"
         ],
-        "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint"
+        "lint": "vendor/bin/pint",
+        "stan": "vendor/bin/phpstan analyse --memory-limit=-1",
+        "ready": [
+            "@composer lint",
+            "@composer stan",
+            "@composer test"
+        ]
     },
     "config": {
         "sort-packages": true,

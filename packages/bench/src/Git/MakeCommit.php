@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ArtisanBuild\Bench\Actions;
+namespace ArtisanBuild\Bench\Git;
 
+use ArtisanBuild\Bench\Actions\GetProjectAndPackagePaths;
 use Illuminate\Support\Facades\Process;
 
 class MakeCommit

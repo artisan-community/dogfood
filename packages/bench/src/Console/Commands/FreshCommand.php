@@ -32,13 +32,14 @@ class FreshCommand extends Command
     {
         if (App::isProduction()) {
             $this->error('You cannot run this command in production');
+
             return self::FAILURE;
         }
 
         $path = config('database.connections.sqlite.database');
         if (File::missing($path)) {
             $this->warn('The database does not exist.');
-            $this->line('Creating an empty database at ' . $path);
+            $this->line('Creating an empty database at '.$path);
             File::put($path, '');
         }
 
@@ -62,23 +63,22 @@ class FreshCommand extends Command
         }
     }
 
-
     #[ChatGPT]
     private function getCpuCores()
     {
         $cores = 1; // Default to 1 core if detection fails
 
-        if ("WIN" === mb_strtoupper(mb_substr(PHP_OS, 0, 3))) {
+        if (mb_strtoupper(mb_substr(PHP_OS, 0, 3)) === 'WIN') {
             // Windows
-            $process = @popen("wmic cpu get NumberOfCores", "rb");
-            if (false !== $process) {
+            $process = @popen('wmic cpu get NumberOfCores', 'rb');
+            if ($process !== false) {
                 fgets($process); // Skip first line
                 $cores = (int) fgets($process);
                 pclose($process);
             }
         } else {
             // Linux and Mac
-            $command = "DARWIN" === mb_strtoupper(PHP_OS) ? "sysctl -n hw.ncpu" : "nproc";
+            $command = mb_strtoupper(PHP_OS) === 'DARWIN' ? 'sysctl -n hw.ncpu' : 'nproc';
             $output = @shell_exec($command);
             $cores = $output ? (int) $output : 1;
         }

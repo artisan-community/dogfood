@@ -17,13 +17,16 @@
     ],
     "require": {
         "php": "^8.3.0",
+        "artisan-build/bench": "dev-main",
+        "illuminate/http": "^11.5",
         "laravel-zero/framework": "^11.0.2",
         "laravel/prompts": "^0.3.2"
     },
     "require-dev": {
         "laravel/pint": "^1.18.1",
         "mockery/mockery": "^1.6.12",
-        "pestphp/pest": "^3.5.1"
+        "pestphp/pest": "^3.5.1",
+        "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "psr-4": {
@@ -45,7 +48,10 @@
             "pestphp/pest-plugin": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
-    "bin": ["kibble"]
+    "bin": ["kibble"],
+    "repositories": [
+        {"type": "path", "url": "packages/*"}
+    ]
 }

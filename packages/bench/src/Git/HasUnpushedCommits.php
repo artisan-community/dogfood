@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ArtisanBuild\Bench\Actions;
+namespace ArtisanBuild\Bench\Git;
 
 use Illuminate\Support\Facades\Process;
 
@@ -12,5 +12,4 @@ class HasUnpushedCommits
     {
         return ! blank(Process::path($path)->run('git log @{u}..')->output());
     }
-
 }

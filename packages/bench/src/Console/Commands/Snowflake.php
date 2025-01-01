@@ -30,6 +30,7 @@ class Snowflake extends Command
     {
         Process::run('php artisan fresh-id | pbcopy');
         $this->info('A fresh snowflake has been copied to your clipboard');
+
         return self::SUCCESS;
     }
 }

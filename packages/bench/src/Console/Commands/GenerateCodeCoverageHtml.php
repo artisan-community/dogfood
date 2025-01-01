@@ -29,10 +29,10 @@ class GenerateCodeCoverageHtml extends Command
     public function handle(): void
     {
 
-        $coverage = include base_path("coverage.php");
+        $coverage = include base_path('coverage.php');
 
-        (new HtmlReport())->process($coverage, public_path('coverage'));
+        (new HtmlReport)->process($coverage, public_path('coverage'));
 
-        $this->info("See your coverage report at " . url('/coverage/index.html'));
+        $this->info('See your coverage report at '.url('/coverage/index.html'));
     }
 }

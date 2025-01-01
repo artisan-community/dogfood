@@ -30,6 +30,7 @@ class Ulid extends Command
     {
         Process::run('php artisan fresh-id ulid | pbcopy');
         $this->info('A fresh ulid has been copied to your clipboard');
+
         return self::SUCCESS;
     }
 }

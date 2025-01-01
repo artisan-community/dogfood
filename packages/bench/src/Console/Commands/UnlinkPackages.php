@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Process;
 class UnlinkPackages extends Command
 {
     protected $signature = 'unlink-packages';
+
     protected $description = 'Unlink any linked packages';
 
     public function handle(): void
@@ -19,7 +20,7 @@ class UnlinkPackages extends Command
 
         foreach ($json as $package) {
             if (File::isDirectory(bench_path($package['directory']))) {
-                Process::run('composer unlink ' . bench_path($package['directory']));
+                Process::run('composer unlink '.bench_path($package['directory']));
             }
         }
     }

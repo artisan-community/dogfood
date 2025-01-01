@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use ArtisanBuild\Bench\Actions\DumpDatabaseForTesting;
 use ArtisanBuild\Bench\Actions\MigrateFresh;
 use ArtisanBuild\Bench\Actions\SeedDatabase;
+use ArtisanBuild\Bench\Database\PrebuiltData\Sqlite\DumpDatabaseForTesting;
 
 return [
     'bench_directory' => base_path('packages'),
@@ -14,8 +14,5 @@ return [
         DumpDatabaseForTesting::class,
     ],
     'run-once' => [
-        [
-
-        ],
     ],
 ];

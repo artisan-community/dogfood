@@ -2,9 +2,12 @@
 
 namespace App\Commands;
 
-use Illuminate\Console\Scheduling\Schedule;
+use ArtisanBuild\Bench\Git\AddSubtreeToPackageDirectory;
+use ArtisanBuild\Bench\Packagist\GetGitHubRepositoryFromPackagistRecord;
+use Illuminate\Support\Facades\File;
 use LaravelZero\Framework\Commands\Command;
 use function Laravel\Prompts\select;
+use function Laravel\Prompts\text;
 
 class AddPackage extends Command
 {
@@ -25,24 +28,30 @@ class AddPackage extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(GetGitHubRepositoryFromPackagistRecord $getRepo, AddSubtreeToPackageDirectory $clone)
     {
         if (select(
-            label: 'Is this package already on GitHub?',
+            label: 'Is this package already in Packagist?',
             options: ['Yes', 'No']
         ) === 'Yes') {
-            $this->info('Package is already on GitHub');
+            [$vendor, $package] = explode('/', text('Enter the namespace and package name', placeholder: 'artisan-build/kibble'));
 
+            if (File::isDirectory(base_path('packages/' . $package))) {
+                $this->error($package . ' is already in your packages directory.');
+                return self::FAILURE;
+            }
+
+            $repo = ($getRepo)(vendor: $vendor, package: $package);
+
+            $branch = text('What branch do you want to clone?', default: 'main');
+
+            $result = ($clone)(repo: $repo, branch: $branch);
+
+            $this->info($result);
+
+            return self::SUCCESS;
 
         }
         $this->info('Creating a new package');
-    }
-
-    /**
-     * Define the command's schedule.
-     */
-    public function schedule(Schedule $schedule): void
-    {
-        // $schedule->command(static::class)->everyMinute();
     }
 }

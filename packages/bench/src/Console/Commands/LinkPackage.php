@@ -37,9 +37,7 @@ class LinkPackage extends Command
             default => throw new Exception('Package name must be in vendor/package format except'),
         };
 
-
-        $folder = base_path('packages/' . $package);
-
+        $folder = base_path('packages/'.$package);
 
         if (File::isDirectory($folder)) {
             throw_if(
@@ -53,15 +51,10 @@ class LinkPackage extends Command
             );
         }
 
-
-
-
         if (File::isDirectory($folder) &&
             ! $this->confirm('This package already exists in your directory. If you continue we will get a fresh copy from GitHub and re-link it. Any local changes will be lost. Do you want to do this?')) {
             return self::SUCCESS;
         }
-
-
 
         File::deleteDirectory($folder);
 
@@ -72,7 +65,7 @@ class LinkPackage extends Command
         }
         Process::path(base_path('packages'))->run("git clone {$repository}");
 
-        Process::run('composer link packages/' . $package);
+        Process::run('composer link packages/'.$package);
 
         return self::SUCCESS;
 

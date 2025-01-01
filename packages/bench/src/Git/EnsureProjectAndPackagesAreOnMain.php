@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ArtisanBuild\Bench\Actions;
+namespace ArtisanBuild\Bench\Git;
+
+use ArtisanBuild\Bench\Actions\GetProjectAndPackagePaths;
 
 class EnsureProjectAndPackagesAreOnMain
 {
@@ -16,7 +18,7 @@ class EnsureProjectAndPackagesAreOnMain
         $paths = ($this->projectAndPackagePaths)();
 
         foreach ($paths as $path) {
-            throw_if(($this->currentBranchName)($path) !== 'main', 'You are not on the main branch in ' . $path);
+            throw_if(($this->currentBranchName)($path) !== 'main', 'You are not on the main branch in '.$path);
         }
     }
 }
