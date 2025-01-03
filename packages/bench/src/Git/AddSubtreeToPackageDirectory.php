@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Process;
 
 class AddSubtreeToPackageDirectory
 {
-    public function __invoke(string $repo, string $branch): string
+    public function __invoke(string $package, string $repo, string $branch): string
     {
-        $process = Process::run("git subtree add --prefix packages $repo $branch --squash");
-        dd($process);
+        $process = Process::run("git subtree add --prefix packages/{$package} {$repo} {$branch} --squash");
+
         return $process->output();
     }
 }
