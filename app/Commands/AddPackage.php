@@ -6,6 +6,7 @@ use ArtisanBuild\Bench\Git\AddSubtreeToPackageDirectory;
 use ArtisanBuild\Bench\Packagist\GetGitHubRepositoryFromPackagistRecord;
 use Illuminate\Support\Facades\File;
 use LaravelZero\Framework\Commands\Command;
+use phpDocumentor\Reflection\Types\Self_;
 use function Laravel\Prompts\select;
 use function Laravel\Prompts\text;
 
@@ -45,7 +46,7 @@ class AddPackage extends Command
 
             $branch = text('What branch do you want to clone?', default: 'main');
 
-            $result = ($clone)(repo: $repo, branch: $branch);
+            $result = ($clone)(package: $package, repo: $repo, branch: $branch);
 
             $this->info($result);
 
@@ -53,5 +54,6 @@ class AddPackage extends Command
 
         }
         $this->info('Creating a new package');
+        return self::SUCCESS;
     }
 }
