@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "shorty/included.md",
+                "file": "shorty/index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "included"
+              "title": "index"
             }
           }
         ]
@@ -164,13 +164,13 @@
   },
   "active": "667a551b1f1bf245",
   "lastOpenFiles": [
+    "shorty/custom.md",
+    "shorty/included.md",
     "shorty/index.md",
     "shorty/roadmap.md",
-    "shorty/custom.md",
     "shorty/discovering.md",
     "shorty/registering.md",
     "shorty/troubleshooting.md",
-    "shorty/included.md",
     "shorty/premium.md",
     "docsidian/index.md",
     "shorty",
