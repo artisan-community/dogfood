@@ -10,6 +10,7 @@
         "larastan/larastan": "^v3.0.2",
         "orchestra/testbench": "^v9.9.0",
         "pestphp/pest": "^v3.7.1",
+        "laravel/pint": "^1.19.0",
         "phpstan/phpstan": "^2.1.0"
     },
 	"autoload": {
