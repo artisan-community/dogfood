@@ -9,7 +9,7 @@ use function Laravel\Prompts\text;
 
 class ImportPackageCommand extends Command
 {
-    protected $signature = 'repo:import';
+    protected $signature = 'import-package';
     protected $description = 'Import a repository into the monorepo with its history';
 
     public function handle()
