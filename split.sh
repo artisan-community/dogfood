@@ -18,9 +18,9 @@ function remote()
 
 git pull origin $CURRENT_BRANCH
 
-remote bench @git@github.com:artisan-build/bench.git
-remote docsidian @git@github.com:docsidian/bench.git
-remote gh @git@github.com:artisan-build/gh.git
+remote bench https://github.com/artisan-build/bench.git
+remote docsidian https://github.com/artisan-build/docsidian.git
+remote gh https://github.com/artisan-build/gh.git
 
 split 'packages/bench' bench
 split 'packages/docsidian' docsidian
