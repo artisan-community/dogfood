@@ -6,10 +6,12 @@ on:
       - main
 
 jobs:
-  prevent-push:
+  prevent-direct-push:
     runs-on: ubuntu-latest
     steps:
-      - name: Fail Push
+      - name: Check if Push is Direct
         run: |
-          echo "Direct pushes to the main branch are not allowed. Please use a pull request."
-          exit 1
+          if [[ "${{ github.event_name }}" == "push" && "${{ github.event.head_commit.message }}" != *"Merge pull request"* ]]; then
+            echo "Direct pushes to the main branch are not allowed. Please use a pull request."
+            exit 1
+          fi
