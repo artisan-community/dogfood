@@ -13,6 +13,7 @@
         "artisan-build/bench": "*",
         "artisan-build/docsidian": "*",
         "artisan-build/gh": "*",
+        "artisan-build/verbs-flux": "*",
         "internachi/modular": "^2.2",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9"
