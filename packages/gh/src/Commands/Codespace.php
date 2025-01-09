@@ -6,10 +6,7 @@ class Codespace extends BaseCommand
 {
     protected string $config_key = 'gh.default_options.codespace';
 
-    public function __construct(public ?string $repository = null)
-    {
-
-    }
+    public function __construct(public ?string $repository = null) {}
 
     public function list(): string
     {

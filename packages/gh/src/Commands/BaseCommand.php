@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Process;
 class BaseCommand implements GHCommand
 {
     public array $options = [];
-    public ?string $path = null;
 
+    public ?string $path = null;
 
     protected string $config_key = '';
 
@@ -29,6 +29,7 @@ class BaseCommand implements GHCommand
     public function path(string $path): static
     {
         $this->path = $path;
+
         return $this;
     }
 
