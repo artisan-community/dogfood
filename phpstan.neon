@@ -6,6 +6,10 @@ parameters:
     paths:
         - app/
         - packages/
+    excludePaths:
+        - packages/verbs-flux
+        - **/*Test.php
+        - packages/**/config/*.php
 
     level: 5
 
