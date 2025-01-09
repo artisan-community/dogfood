@@ -6,7 +6,7 @@ class Search extends BaseCommand
 {
     protected string $config_key = 'gh.default_options.search';
 
-    public function __construct(public string $query) {}
+    public function __construct() {}
 
     public function repos(string $query): string
     {
