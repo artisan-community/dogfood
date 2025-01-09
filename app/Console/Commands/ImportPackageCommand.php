@@ -5,11 +5,13 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Process;
+
 use function Laravel\Prompts\text;
 
 class ImportPackageCommand extends Command
 {
     protected $signature = 'import-package';
+
     protected $description = 'Import a repository into the monorepo with its history';
 
     public function handle()
@@ -47,13 +49,13 @@ class ImportPackageCommand extends Command
 
             $branchExists = Process::run("git show-ref --verify --quiet refs/heads/$branch")->successful();
 
-            if (!$branchExists) {
+            if (! $branchExists) {
                 $rootCommit = trim(Process::run("git commit-tree $emptyTree -m 'Root commit for monorepo branch $branch'")->output());
                 Process::run("git branch -- $branch $rootCommit");
             }
 
             Process::run("git symbolic-ref HEAD refs/heads/$branch");
-            Process::run("git reset -q");
+            Process::run('git reset -q');
 
             Process::run("git read-tree --prefix=packages/$repoPath refs/remotes/$repoName/$branch");
             $tree = trim(Process::run('git write-tree')->output());

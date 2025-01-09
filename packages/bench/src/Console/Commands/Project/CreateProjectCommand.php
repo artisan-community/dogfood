@@ -28,12 +28,12 @@ class CreateProjectCommand extends Command
         $this->info('Adding composer scripts...');
         $composer['scripts'] = array_merge($composer_scripts, data_get($composer, 'scripts', []));
 
-        File::put(base_path('composer.json'), json_encode($composer, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES));
+        File::put(base_path('composer.json'), json_encode($composer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 
         $this->info('Copying stubs...');
 
         foreach (['phpstan.neon', 'phpstan-baseline.neon'] as $stub) {
-            File::put(base_path($stub), File::get(__DIR__.'/../../../../stubs/project/' . $stub));
+            File::put(base_path($stub), File::get(__DIR__.'/../../../../stubs/project/'.$stub));
         }
 
         return self::SUCCESS;

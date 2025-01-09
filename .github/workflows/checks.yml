@@ -1,0 +1,44 @@
+name: Checks
+on:
+  push:
+jobs:
+  lint:
+    if: contains(github.event.head_commit.message, '#nodeploy') == false
+    uses: ./.github/workflows/lint.yml
+  test:
+    if: contains(github.event.head_commit.message, '#nodeploy') == false
+    uses: ./.github/workflows/test.yml
+    secrets: inherit
+  stan:
+    if: contains(github.event.head_commit.message, '#nodeploy') == false
+    uses: ./.github/workflows/stan.yml
+    secrets: inherit
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [ lint, test, stan ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          tools: composer:v2
+          coverage: none
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      - name: Setup composer cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+      - name: Set up GitHub credentials for private packages
+        run: composer config --global github-oauth.github.com ${{ secrets.GH_TOKEN }}
+      - name: Install composer dependencies
+        env:
+          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
+        run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: Split
+        run: ./split.sh
