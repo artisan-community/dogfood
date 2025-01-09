@@ -30,8 +30,6 @@ jobs:
           FLUX_USERNAME: ${{ secrets.FLUX_USERNAME }}
           FLUX_LICENSE_KEY: ${{ secrets.FLUX_LICENSE_KEY }}
         run: composer config http-basic.composer.fluxui.dev "$FLUX_USERNAME" "$FLUX_LICENSE_KEY"
-      - name: Set up GitHub credentials for private packages
-        run: composer config --global github-oauth.github.com ${{ secrets.GH_TOKEN }}
       - name: Install composer dependencies
         run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Run stan
