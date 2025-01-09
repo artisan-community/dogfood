@@ -8,7 +8,7 @@
     "packages": [
         {
             "name": "artisan-build/bench",
-            "version": "dev-main",
+            "version": "dev-github-actions",
             "dist": {
                 "type": "path",
                 "url": "packages/bench",
@@ -123,7 +123,7 @@
         },
         {
             "name": "artisan-build/docsidian",
-            "version": "dev-main",
+            "version": "dev-github-actions",
             "dist": {
                 "type": "path",
                 "url": "packages/docsidian",
@@ -202,7 +202,7 @@
         },
         {
             "name": "artisan-build/gh",
-            "version": "dev-main",
+            "version": "dev-github-actions",
             "dist": {
                 "type": "path",
                 "url": "packages/gh",
