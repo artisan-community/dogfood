@@ -15,14 +15,14 @@
 		}
 	],
 	"require": {
-		"php": ">8.2"
-	},
+		"php": ">8.2",
+        "hirethunk/verbs": "^0.6.4",
+        "illuminate/support": "^11.30",
+        "livewire/flux": "^1.0",
+        "livewire/flux-pro": "^1.0"
+    },
 	"require-dev": {
-		"hirethunk/verbs": "^0.6.4",
-		"illuminate/support": "^11.30",
-		"phpstan/phpstan": "^1.12",
-		"livewire/flux": "^1.0",
-		"livewire/flux-pro": "^1.0"
+		"phpstan/phpstan": "^1.12"
 	},
 	"suggest": {
 		"hirethunk/verbs": "If you don't know, then this package is not for you. dummy.",

@@ -136,9 +136,9 @@ class GH
         return new Run($repository);
     }
 
-    public static function search(?string $query = null): Search
+    public static function search(): Search
     {
-        return new Search($query);
+        return new Search;
     }
 
     public static function secret(?string $repository): Secret

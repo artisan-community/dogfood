@@ -6,6 +6,8 @@ class Cache extends BaseCommand
 {
     protected string $config_key = 'gh.default_options.cache';
 
+    public function __construct(public ?string $repository = null) {}
+
     public function list(): string
     {
         $command = implode(' ', [
