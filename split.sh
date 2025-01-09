@@ -16,7 +16,7 @@ function remote()
     git remote add $1 $2 || true
 }
 
-git pull origin $CURRENT_BRANCH
+# git pull origin $CURRENT_BRANCH
 
 remote bench https://github.com/artisan-build/bench.git
 remote docsidian https://github.com/artisan-build/docsidian.git
