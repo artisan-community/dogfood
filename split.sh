@@ -18,7 +18,7 @@ function remote()
 
 # git pull origin $CURRENT_BRANCH
 
-# start-remote
+#start-remote
 remote bench https://github.com/artisan-build/bench.git
 remote docsidian https://github.com/artisan-build/docsidian.git
 remote gh https://github.com/artisan-build/gh.git
