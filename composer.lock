@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8913642529b802b9ebba2bf53b846392",
+    "content-hash": "160b91c0a3e9c1a9e2bf7126d809e9e8",
     "packages": [
         {
             "name": "artisan-build/bench",
-            "version": "dev-github-actions",
+            "version": "dev-create-package-skeleton",
             "dist": {
                 "type": "path",
                 "url": "packages/bench",
@@ -123,7 +123,7 @@
         },
         {
             "name": "artisan-build/docsidian",
-            "version": "dev-github-actions",
+            "version": "dev-create-package-skeleton",
             "dist": {
                 "type": "path",
                 "url": "packages/docsidian",
@@ -202,7 +202,7 @@
         },
         {
             "name": "artisan-build/gh",
-            "version": "dev-github-actions",
+            "version": "dev-create-package-skeleton",
             "dist": {
                 "type": "path",
                 "url": "packages/gh",
@@ -272,6 +272,84 @@
             "license": [
                 "MIT"
             ],
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "artisan-build/kibble",
+            "version": "dev-create-package-skeleton",
+            "dist": {
+                "type": "path",
+                "url": "packages/kibble",
+                "reference": "2e0d6dcbd97fceea2bdbae60600d876755e3f51e"
+            },
+            "require": {
+                "artisan-build/gh": "*",
+                "illuminate/support": "^11.36"
+            },
+            "require-dev": {
+                "larastan/larastan": "^v3.0.2",
+                "laravel/pint": "^1.19.0",
+                "orchestra/testbench": "^v9.9.0",
+                "pestphp/pest": "^v3.7.1",
+                "phpstan/phpstan": "^2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ArtisanBuild\\Kibble\\Providers\\KibbleServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ArtisanBuild\\Kibble\\": "src/",
+                    "ArtisanBuild\\Kibble\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@composer run prepare"
+                ],
+                "clear": [
+                    "@php vendor/bin/testbench package:purge-bench --ansi"
+                ],
+                "prepare": [
+                    "@php vendor/bin/testbench package:discover --ansi"
+                ],
+                "build": [
+                    "@composer run prepare",
+                    "@php vendor/bin/testbench workbench:build --ansi"
+                ],
+                "start": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@composer run build",
+                    "@php vendor/bin/testbench serve"
+                ],
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "test-coverage": [
+                    "vendor/bin/pest --coverage"
+                ],
+                "lint": [
+                    "vendor/bin/pint"
+                ],
+                "stan": [
+                    "vendor/bin/phpstan analyse --memory-limit=-1"
+                ],
+                "ready": [
+                    "@composer lint",
+                    "@composer stan",
+                    "@composer test"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP package creation and management tools",
             "transport-options": {
                 "relative": true
             }
@@ -13010,7 +13088,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.2"
+        "php": "^8.3"
     },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"
