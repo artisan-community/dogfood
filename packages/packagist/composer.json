@@ -1,6 +1,6 @@
 {
-	"name": "artisan-build/skeleton",
-	"description": "SkeletonDescription",
+	"name": "artisan-build/packagist",
+	"description": "Laravel wrapper for the Packagist API",
 	"type": "library",
 	"license": "MIT",
 	"require": {
@@ -15,15 +15,15 @@
     },
 	"autoload": {
 		"psr-4": {
-			"ArtisanBuild\\Skeleton\\": "src/",
-			"ArtisanBuild\\Skeleton\\Tests\\": "tests/"
+			"ArtisanBuild\\Packagist\\": "src/",
+			"ArtisanBuild\\Packagist\\Tests\\": "tests/"
 		}
 	},
 	"minimum-stability": "stable",
 	"extra": {
 		"laravel": {
 			"providers": [
-				"ArtisanBuild\\Skeleton\\Providers\\SkeletonServiceProvider"
+				"ArtisanBuild\\Packagist\\Providers\\PackagistServiceProvider"
 			]
 		}
 	},

@@ -119,6 +119,19 @@ class Repo extends BaseCommand
         return $this->executeCommand($command);
     }
 
+    public function list(string $owner)
+    {
+        $command = implode(' ', array_filter([
+            'gh',
+            'repo',
+            'list',
+            $owner,
+            $this->getOptions('list'),
+        ]));
+
+        return $this->executeCommand($command);
+    }
+
     public function rename(string $newName): string
     {
         $command = implode(' ', [
