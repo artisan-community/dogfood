@@ -21,9 +21,13 @@ function remote()
 remote bench https://github.com/artisan-build/bench.git
 remote docsidian https://github.com/artisan-build/docsidian.git
 remote gh https://github.com/artisan-build/gh.git
+remote kibble https://github.com/artisan-build/kibble.git
+remote skeleton https://github.com/artisan-build/skeleton.git
 remote verbs-flux https://github.com/artisan-build/verbs-flux.git
 
 split 'packages/bench' bench
 split 'packages/docsidian' docsidian
 split 'packages/gh' gh
+split 'packages/kibble' kibble
+split 'packages/skeleton' skeleton
 split 'packages/verbs-flux' verbs-flux
