@@ -14,6 +14,7 @@
         "artisan-build/docsidian": "*",
         "artisan-build/gh": "*",
         "artisan-build/kibble": "*",
+        "artisan-build/packagist": "*",
         "artisan-build/verbs-flux": "*",
         "internachi/modular": "^2.2",
         "laravel/framework": "^11.31",
