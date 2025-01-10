@@ -1,4 +1,4 @@
-# Contributing to Docsidian
+# Contributing to Packagist
 
 Contributions are welcome from premium members of the [Artisan Build Community](https://artisan.community)
 
