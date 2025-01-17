@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87c053d86c1751294f02ed01e0738639",
+    "content-hash": "f08bbce97143076795bdbd2af1d8a049",
     "packages": [
         {
             "name": "artisan-build/bench",
-            "version": "dev-start-automating-package-creation",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/bench",
@@ -123,7 +123,7 @@
         },
         {
             "name": "artisan-build/docsidian",
-            "version": "dev-start-automating-package-creation",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/docsidian",
@@ -201,8 +201,85 @@
             }
         },
         {
+            "name": "artisan-build/flux-themes",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/flux-themes",
+                "reference": "eaf06aa2ffb3e9efed5f7463f2d688c91e897772"
+            },
+            "require": {
+                "illuminate/support": "^11.36"
+            },
+            "require-dev": {
+                "larastan/larastan": "^v3.0.2",
+                "laravel/pint": "^1.19.0",
+                "orchestra/testbench": "^v9.9.0",
+                "pestphp/pest": "^v3.7.1",
+                "phpstan/phpstan": "^2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ArtisanBuild\\FluxThemes\\Providers\\FluxThemesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ArtisanBuild\\FluxThemes\\": "src/",
+                    "ArtisanBuild\\FluxThemes\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@composer run prepare"
+                ],
+                "clear": [
+                    "@php vendor/bin/testbench package:purge-bench --ansi"
+                ],
+                "prepare": [
+                    "@php vendor/bin/testbench package:discover --ansi"
+                ],
+                "build": [
+                    "@composer run prepare",
+                    "@php vendor/bin/testbench workbench:build --ansi"
+                ],
+                "start": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@composer run build",
+                    "@php vendor/bin/testbench serve"
+                ],
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "test-coverage": [
+                    "vendor/bin/pest --coverage"
+                ],
+                "lint": [
+                    "vendor/bin/pint"
+                ],
+                "stan": [
+                    "vendor/bin/phpstan analyse --memory-limit=-1"
+                ],
+                "ready": [
+                    "@composer lint",
+                    "@composer stan",
+                    "@composer test"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Theme switcher for FluxUI",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "artisan-build/gh",
-            "version": "dev-start-automating-package-creation",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/gh",
@@ -278,7 +355,7 @@
         },
         {
             "name": "artisan-build/kibble",
-            "version": "dev-start-automating-package-creation",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/kibble",
@@ -356,7 +433,7 @@
         },
         {
             "name": "artisan-build/packagist",
-            "version": "dev-start-automating-package-creation",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/packagist",

@@ -12,6 +12,7 @@
         "php": "^8.3",
         "artisan-build/bench": "*",
         "artisan-build/docsidian": "*",
+        "artisan-build/flux-themes": "*",
         "artisan-build/gh": "*",
         "artisan-build/kibble": "*",
         "artisan-build/packagist": "*",
