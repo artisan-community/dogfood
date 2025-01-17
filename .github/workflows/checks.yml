@@ -41,4 +41,4 @@ jobs:
         run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Split
         if: success()
-        run: ./split.sh
+        run: php artisan kibble:split
