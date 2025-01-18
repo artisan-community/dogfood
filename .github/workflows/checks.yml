@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} # Automatically sets up push permissions
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -53,4 +55,4 @@ jobs:
         if: success()
         run: php artisan kibble:split
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
