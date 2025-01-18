@@ -53,4 +53,4 @@ jobs:
         if: success()
         run: php artisan kibble:split
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
