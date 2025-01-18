@@ -21,7 +21,7 @@ jobs:
   deploy:
     if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '#nodeploy')
     runs-on: ubuntu-latest
-    needs: [ lint, test, stan ]
+    needs: [lint, test, stan]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -49,7 +49,7 @@ jobs:
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
         run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-      - name: Split
+      - name: Split Packages
         if: success()
         run: php artisan kibble:split
         env:
