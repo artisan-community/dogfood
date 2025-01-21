@@ -1,11 +1,9 @@
 # Flux Themes
 
 Some of our applications are "white label" type SaaS applications that we want our users to be able to theme to match
-their brands. This package provides the functionality to make that happen. It includes:
+their brands. This package provides the functionality to make that happen.
 
-1. Several pre-built FluxUI themes (using the recommended colors from FluxUI)
-2. A customizable theme builder that provides color pickers to allow our users to set any colors they want
-3. The ability for users to select from available themes installed on a particular site
+We have included all of [Flux's color shemes](https://fluxui.dev/themes) with their chosen variety of gray. 
 
 > [!WARNING]  
 > This package is currently under active development, and we have not yet released a major version. Once a 0.* version
@@ -23,7 +21,22 @@ their brands. This package provides the functionality to make that happen. It in
 
 ## Configuration
 
+There are currently no configuration options for this package.
+
 ## Usage
+
+`php artisan flux-theme:set {color?}`
+
+Run this command to set the color scheme for your site. This will handle the entire FluxUI setup in both the `app.css`
+and `tailwind.config.js` file. If you don't pass a color, you'll be prompted to choose your color. 
+
+One thing to note is that an additional entry is added to the `content` block of the `tailwind.config.css` file that
+adds a wildcard path to all of our packages. We do this for our own purposes. You can safely leave this line in place
+(and you'll want to if you use any of our other Flux-related packages or the more advanced features of this one) or
+you may safely remove it if you're just using this command to set up your FluxUI color scheme.
+
+For more advanced ways to use this package and to learn how we use it in our "environment per tenant" SaaS applications,
+join the [Artisan Build Community](https://artisan.community).
 
 ## Memberware
 

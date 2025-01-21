@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 
 class WriteToAppCss
 {
-    public function __invoke(Theme $theme)
+    public function __invoke(Theme $theme): void
     {
         $css = File::get($theme->css_file);
 

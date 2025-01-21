@@ -2,6 +2,7 @@
 
 namespace ArtisanBuild\FluxThemes\Providers;
 
+use ArtisanBuild\FluxThemes\Commands\SetThemeCommand;
 use Illuminate\Support\ServiceProvider;
 
 class FluxThemesServiceProvider extends ServiceProvider
@@ -9,6 +10,10 @@ class FluxThemesServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../../config/flux-themes.php', 'flux-themes');
+
+        $this->commands([
+            SetThemeCommand::class,
+        ]);
     }
 
     public function boot(): void
