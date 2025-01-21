@@ -3,7 +3,7 @@
 Some of our applications are "white label" type SaaS applications that we want our users to be able to theme to match
 their brands. This package provides the functionality to make that happen.
 
-We have included all of [Flux's color shemes](https://fluxui.dev/themes) with their chosen variety of gray. 
+We have included all of [Flux's color schemes](https://fluxui.dev/themes) with their chosen variety of gray. 
 
 > [!WARNING]  
 > This package is currently under active development, and we have not yet released a major version. Once a 0.* version
