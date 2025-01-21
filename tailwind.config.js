@@ -11,6 +11,14 @@ export default {
     ],
     theme: {
         extend: {
+            colors: {
+                zinc: colors.gray,
+                accent: {
+                    DEFAULT: 'var(--color-accent)',
+                    content: 'var(--color-accent-content)',
+                    foreground: 'var(--color-accent-foreground)',
+                },
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
