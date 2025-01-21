@@ -15,3 +15,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 pest()->extends(TestCase::class, DatabaseTransactions::class)->in('Feature', '../packages/*');
+
+expect()->extend('toBeIgnoringWhitespace', function (string $expected) {
+    expect(trim(preg_replace('/\s\s+/', ' ', $this->value)))->toBe(trim(preg_replace('/\s\s+/', ' ', $expected)));
+});
