@@ -1,5 +1,7 @@
 # Flux Themes
 
+This package sets up a Laravel application to use [FluxUI](https://fluxui.dev). It has one command that you can run when setting up a new site that will let you set or choose a color scheme from Flux's themes and it will make all of the required edits to the `tailwind.config.js` package and `app.css` package to run Flux and use your chosen color scheme.
+
 Some of our applications are "white label" type SaaS applications that we want our users to be able to theme to match
 their brands. This package provides the functionality to make that happen.
 
