@@ -49,7 +49,7 @@ class Ruleset extends BaseCommand
     public function create(array $params): string
     {
         $paramArgs = array_map(
-            fn ($key, $value) => "--$key ".escapeshellarg($value),
+            fn ($key, $value) => "--$key ".escapeshellarg((string) $value),
             array_keys($params),
             $params
         );
@@ -68,7 +68,7 @@ class Ruleset extends BaseCommand
     public function edit(string $id, array $params): string
     {
         $paramArgs = array_map(
-            fn ($key, $value) => "--$key ".escapeshellarg($value),
+            fn ($key, $value) => "--$key ".escapeshellarg((string) $value),
             array_keys($params),
             $params
         );

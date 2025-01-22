@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 
 class FluxThemesServiceProvider extends ServiceProvider
 {
+    #[\Override]
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../../config/flux-themes.php', 'flux-themes');

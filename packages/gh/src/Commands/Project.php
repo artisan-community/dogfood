@@ -80,7 +80,7 @@ class Project extends BaseCommand
     public function edit(int $id, array $fields): string
     {
         $fieldArgs = array_map(
-            fn ($key, $value) => "--$key ".escapeshellarg($value),
+            fn ($key, $value) => "--$key ".escapeshellarg((string) $value),
             array_keys($fields),
             $fields
         );

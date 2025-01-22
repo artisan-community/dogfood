@@ -14,8 +14,11 @@
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-pest()->extends(TestCase::class, DatabaseTransactions::class)->in('Feature', '../packages/*');
+pest()->extends(TestCase::class, DatabaseTransactions::class)
+    ->in('Feature', '../packages/*')
+    ->beforeEach(fn() => $this->withoutVite());
 
-expect()->extend('toBeIgnoringWhitespace', function (string $expected) {
-    expect(trim(preg_replace('/\s\s+/', ' ', $this->value)))->toBe(trim(preg_replace('/\s\s+/', ' ', $expected)));
+
+expect()->extend('toBeIgnoringWhitespace', function (string $expected): void {
+    expect(trim((string) preg_replace('/\s\s+/', ' ', (string) $this->value)))->toBe(trim((string) preg_replace('/\s\s+/', ' ', $expected)));
 });

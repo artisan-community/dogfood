@@ -33,7 +33,7 @@ class WriteToTailwindConfig
         $configContent = preg_replace('/accent:\s*{.*?}\s*,/s', '', $configContent);
         $pattern = '/colors:\s*{.*?}\s*,/s';
 
-        return preg_replace($pattern, '', $configContent);
+        return preg_replace($pattern, '', (string) $configContent);
     }
 
     protected function generateColorsBlock(Theme $theme): string
