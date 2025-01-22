@@ -28,7 +28,7 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Verbstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
-        return DB::transaction(fn() => tap(User::create([
+        return DB::transaction(fn () => tap(User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),

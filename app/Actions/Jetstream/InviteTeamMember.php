@@ -6,9 +6,9 @@ use App\Models\Team;
 use App\Models\User;
 use ArtisanBuild\Verbstream\Contracts\InvitesTeamMembers;
 use ArtisanBuild\Verbstream\Events\InvitingTeamMember;
-use ArtisanBuild\Verbstream\Verbstream;
 use ArtisanBuild\Verbstream\Mail\TeamInvitation;
 use ArtisanBuild\Verbstream\Rules\Role;
+use ArtisanBuild\Verbstream\Verbstream;
 use Closure;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Gate;
@@ -34,6 +34,7 @@ class InviteTeamMember implements InvitesTeamMembers
             'role' => $role,
         ]);
 
+        /** @var \App\Models\TeamInvitation $invitation */
         Mail::to($email)->send(new TeamInvitation($invitation));
     }
 
