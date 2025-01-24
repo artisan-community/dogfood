@@ -34,11 +34,13 @@ class WriteToTailwindConfig
 
     protected function ensureColorsAreSet(string $configContent): string
     {
-        if (!str_contains($configContent, "import colors from 'tailwindcss/colors';")) {
+        if (! str_contains($configContent, "import colors from 'tailwindcss/colors';")) {
             $configContent = implode("\n", ["import colors from 'tailwindcss/colors';", $configContent]);
         }
+
         return $configContent;
     }
+
     protected function removeColorsBlock(string $configContent): string
     {
         $configContent = preg_replace('/accent:\s*{.*?}\s*,/s', '', $configContent);
