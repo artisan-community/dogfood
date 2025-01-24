@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6919d9f7cb894c7b2a386367838242fd",
+    "content-hash": "d1727f4f40217deea1994e2d5a78d5e8",
     "packages": [
         {
             "name": "artisan-build/bench",
@@ -583,83 +583,6 @@
                 "MIT"
             ],
             "description": "Laravel wrapper for the Packagist API",
-            "transport-options": {
-                "relative": true
-            }
-        },
-        {
-            "name": "artisan-build/till",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "packages/till",
-                "reference": "4c0b9df38ebb0e12a0eda840b554d85e93f5db96"
-            },
-            "require": {
-                "illuminate/support": "^11.36"
-            },
-            "require-dev": {
-                "larastan/larastan": "^v3.0.2",
-                "laravel/pint": "^1.19.0",
-                "orchestra/testbench": "^v9.9.0",
-                "pestphp/pest": "^v3.7.1",
-                "phpstan/phpstan": "^2.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "ArtisanBuild\\Till\\Providers\\TillServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "ArtisanBuild\\Till\\": "src/",
-                    "ArtisanBuild\\Till\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "post-autoload-dump": [
-                    "@composer run prepare"
-                ],
-                "clear": [
-                    "@php vendor/bin/testbench package:purge-bench --ansi"
-                ],
-                "prepare": [
-                    "@php vendor/bin/testbench package:discover --ansi"
-                ],
-                "build": [
-                    "@composer run prepare",
-                    "@php vendor/bin/testbench workbench:build --ansi"
-                ],
-                "start": [
-                    "Composer\\Config::disableProcessTimeout",
-                    "@composer run build",
-                    "@php vendor/bin/testbench serve"
-                ],
-                "test": [
-                    "vendor/bin/pest"
-                ],
-                "test-coverage": [
-                    "vendor/bin/pest --coverage"
-                ],
-                "lint": [
-                    "vendor/bin/pint"
-                ],
-                "stan": [
-                    "vendor/bin/phpstan analyse --memory-limit=-1"
-                ],
-                "ready": [
-                    "@composer lint",
-                    "@composer stan",
-                    "@composer test"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "A companion to Laravel Cashier that provides Verbs-enabled webhook controllers and some utilities for setting up products and plans",
             "transport-options": {
                 "relative": true
             }
@@ -3032,16 +2955,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v11.39.1",
+            "version": "v11.40.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "3d693dd36e78121bcd51fc02eda4bc137d2a17f2"
+                "reference": "599a28196d284fee158cc10086fd56ac625ad7a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/3d693dd36e78121bcd51fc02eda4bc137d2a17f2",
-                "reference": "3d693dd36e78121bcd51fc02eda4bc137d2a17f2",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/599a28196d284fee158cc10086fd56ac625ad7a3",
+                "reference": "599a28196d284fee158cc10086fd56ac625ad7a3",
                 "shasum": ""
             },
             "require": {
@@ -3067,7 +2990,7 @@
                 "league/flysystem-local": "^3.25.1",
                 "league/uri": "^7.5.1",
                 "monolog/monolog": "^3.0",
-                "nesbot/carbon": "^2.72.2|^3.4",
+                "nesbot/carbon": "^2.72.6|^3.8.4",
                 "nunomaduro/termwind": "^2.0",
                 "php": "^8.2",
                 "psr/container": "^1.1.1|^2.0.1",
@@ -3142,6 +3065,7 @@
                 "fakerphp/faker": "^1.24",
                 "guzzlehttp/promises": "^2.0.3",
                 "guzzlehttp/psr7": "^2.4",
+                "laravel/pint": "^1.18",
                 "league/flysystem-aws-s3-v3": "^3.25.1",
                 "league/flysystem-ftp": "^3.25.1",
                 "league/flysystem-path-prefixing": "^3.25.1",
@@ -3242,7 +3166,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-01-22T17:01:46+00:00"
+            "time": "2025-01-24T16:17:42+00:00"
         },
         {
             "name": "laravel/pennant",
