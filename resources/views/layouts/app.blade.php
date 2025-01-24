@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐶</text></svg>">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -31,22 +32,6 @@
 
         <livewire:ft:header-right-navbar/>
 
-        @auth
-        <flux:dropdown position="top" align="start">
-            <flux:profile avatar="https://fluxui.dev/img/demo/user.png" />
-
-            <flux:menu>
-                <flux:menu.radio.group>
-                    <flux:menu.radio checked>Olivia Martin</flux:menu.radio>
-                    <flux:menu.radio>Truly Delta</flux:menu.radio>
-                </flux:menu.radio.group>
-
-                <flux:menu.separator />
-
-                <flux:menu.item icon="arrow-right-start-on-rectangle">Logout</flux:menu.item>
-            </flux:menu>
-        </flux:dropdown>
-        @endauth
     </flux:header>
 
     <flux:sidebar stashable sticky class="lg:hidden bg-zinc-50 dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-700">
@@ -81,14 +66,9 @@
             @isset($sidebar_navigation)
             <div class="w-full md:w-[220px] pb-4 mr-10">
                 <flux:navlist>
-                    <flux:navlist.item href="#" current>Dashboard</flux:navlist.item>
-                    <flux:navlist.item href="#" badge="32">Orders</flux:navlist.item>
-                    <flux:navlist.item href="#">Catalog</flux:navlist.item>
-                    <flux:navlist.item href="#">Payments</flux:navlist.item>
-                    <flux:navlist.item href="#">Customers</flux:navlist.item>
-                    <flux:navlist.item href="#">Billing</flux:navlist.item>
-                    <flux:navlist.item href="#">Quotes</flux:navlist.item>
-                    <flux:navlist.item href="#">Configuration</flux:navlist.item>
+                    @foreach ($sidebar_navigation as $item)
+                        <flux:navlist.item :href="$item['href']" :badge="$item['badge']" :icon="$item['icon']">{{ $item['text'] }}</flux:navlist.item>
+                     @endforeach
                 </flux:navlist>
             </div>
 

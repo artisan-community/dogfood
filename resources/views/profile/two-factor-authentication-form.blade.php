@@ -4,11 +4,11 @@
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Add additional security to your account using two factor authentication.') }}
+        <flux:text>{{ __('Add additional security to your account using two factor authentication.') }}</flux:text>
     </x-slot>
 
     <x-slot name="content">
-        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+        <flux:heading level="3">
             @if ($this->enabled)
                 @if ($showingConfirmation)
                     {{ __('Finish enabling two factor authentication.') }}
@@ -18,12 +18,12 @@
             @else
                 {{ __('You have not enabled two factor authentication.') }}
             @endif
-        </h3>
+        </flux:heading>
 
-        <div class="mt-3 max-w-xl text-sm text-gray-600 dark:text-gray-400">
-            <p>
+        <div class="mt-3 max-w-xl">
+            <flux:text>
                 {{ __('When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone\'s Google Authenticator application.') }}
-            </p>
+            </flux:text>
         </div>
 
         @if ($this->enabled)
