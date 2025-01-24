@@ -4,6 +4,7 @@ namespace ArtisanBuild\FluxThemes\Actions;
 
 use ArtisanBuild\FluxThemes\Theme;
 use Illuminate\Support\Facades\File;
+use RuntimeException;
 
 class WriteToTailwindConfig
 {
@@ -12,13 +13,16 @@ class WriteToTailwindConfig
         $configPath = $theme->tailwind_config;
 
         if (! File::exists($configPath)) {
-            throw new \RuntimeException("Tailwind config file not found at: {$configPath}");
+            throw new RuntimeException("Tailwind config file not found at: {$configPath}");
         }
 
         $configContent = File::get($configPath);
 
         // Remove existing colors block if it exists
         $configContent = $this->removeColorsBlock($configContent);
+
+        // Ensure the colors object exists
+        $configContent = $this->ensureColorsAreSet($configContent);
 
         // Build and insert the new colors block
         $newColorsBlock = $this->generateColorsBlock($theme);
@@ -28,6 +32,13 @@ class WriteToTailwindConfig
         File::put($configPath, preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $configContent));
     }
 
+    protected function ensureColorsAreSet(string $configContent): string
+    {
+        if (!str_contains($configContent, "const colors = require('tailwindcss/colors');")) {
+            $configContent = implode("\n", ["const colors = require('tailwindcss/colors');", $configContent]);
+        }
+        return $configContent;
+    }
     protected function removeColorsBlock(string $configContent): string
     {
         $configContent = preg_replace('/accent:\s*{.*?}\s*,/s', '', $configContent);

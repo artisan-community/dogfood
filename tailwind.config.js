@@ -1,6 +1,5 @@
+const colors = require('tailwindcss/colors');
 import defaultTheme from 'tailwindcss/defaultTheme';
-import forms from '@tailwindcss/forms';
-import typography from '@tailwindcss/typography';
 /** @type {import('tailwindcss').Config} */
 export default {
     darkMode: 'selector',
@@ -16,6 +15,7 @@ export default {
     theme: {
         extend: {
 			colors: {
+                zinc: colors.gray,
                 accent: {
                     DEFAULT: 'var(--color-accent)',
                     content: 'var(--color-accent-content)',
