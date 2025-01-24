@@ -1,6 +1,6 @@
+import colors from 'tailwindcss/colors';
+const colors = require('tailwindcss/colors');
 import defaultTheme from 'tailwindcss/defaultTheme';
-import forms from '@tailwindcss/forms';
-import typography from '@tailwindcss/typography';
 /** @type {import('tailwindcss').Config} */
 export default {
     darkMode: 'selector',
