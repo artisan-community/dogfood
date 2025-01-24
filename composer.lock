@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d765dcf834727c3057ab23bd288ca21",
+    "content-hash": "791acd015492224ecce018f727be81c2",
     "packages": [
         {
             "name": "artisan-build/bench",
-            "version": "dev-verbstream",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/bench",
@@ -123,7 +123,7 @@
         },
         {
             "name": "artisan-build/docsidian",
-            "version": "dev-verbstream",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/docsidian",
@@ -202,7 +202,7 @@
         },
         {
             "name": "artisan-build/flux-themes",
-            "version": "dev-verbstream",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/flux-themes",
@@ -281,7 +281,7 @@
         },
         {
             "name": "artisan-build/gh",
-            "version": "dev-verbstream",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/gh",
@@ -357,7 +357,7 @@
         },
         {
             "name": "artisan-build/kibble",
-            "version": "dev-verbstream",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/kibble",
@@ -435,7 +435,7 @@
         },
         {
             "name": "artisan-build/packagist",
-            "version": "dev-verbstream",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/packagist",
@@ -511,6 +511,83 @@
             }
         },
         {
+            "name": "artisan-build/till",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/till",
+                "reference": "2efa9e3e474fbbc164b7a5c295d50198eb2d3c9a"
+            },
+            "require": {
+                "illuminate/support": "^11.36"
+            },
+            "require-dev": {
+                "larastan/larastan": "^v3.0.2",
+                "laravel/pint": "^1.19.0",
+                "orchestra/testbench": "^v9.9.0",
+                "pestphp/pest": "^v3.7.1",
+                "phpstan/phpstan": "^2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ArtisanBuild\\Till\\Providers\\TillServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ArtisanBuild\\Till\\": "src/",
+                    "ArtisanBuild\\Till\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@composer run prepare"
+                ],
+                "clear": [
+                    "@php vendor/bin/testbench package:purge-bench --ansi"
+                ],
+                "prepare": [
+                    "@php vendor/bin/testbench package:discover --ansi"
+                ],
+                "build": [
+                    "@composer run prepare",
+                    "@php vendor/bin/testbench workbench:build --ansi"
+                ],
+                "start": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@composer run build",
+                    "@php vendor/bin/testbench serve"
+                ],
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "test-coverage": [
+                    "vendor/bin/pest --coverage"
+                ],
+                "lint": [
+                    "vendor/bin/pint"
+                ],
+                "stan": [
+                    "vendor/bin/phpstan analyse --memory-limit=-1"
+                ],
+                "ready": [
+                    "@composer lint",
+                    "@composer stan",
+                    "@composer test"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A companion to Laravel Cashier that provides Verbs-enabled webhook controllers and some utilities for setting up products and plans",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "artisan-build/verbs-flux",
             "version": "0.1.0",
             "dist": {
@@ -572,7 +649,7 @@
         },
         {
             "name": "artisan-build/verbstream",
-            "version": "dev-verbstream",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/verbstream",

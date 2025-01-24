@@ -16,6 +16,7 @@
         "artisan-build/gh": "*",
         "artisan-build/kibble": "*",
         "artisan-build/packagist": "*",
+        "artisan-build/till": "*",
         "artisan-build/verbs-flux": "*",
         "artisan-build/verbstream": "*",
         "internachi/modular": "^2.2",
