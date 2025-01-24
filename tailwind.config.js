@@ -1,3 +1,4 @@
+import colors from 'tailwindcss/colors';
 const colors = require('tailwindcss/colors');
 import defaultTheme from 'tailwindcss/defaultTheme';
 /** @type {import('tailwindcss').Config} */
@@ -15,7 +16,6 @@ export default {
     theme: {
         extend: {
 			colors: {
-                zinc: colors.gray,
                 accent: {
                     DEFAULT: 'var(--color-accent)',
                     content: 'var(--color-accent-content)',

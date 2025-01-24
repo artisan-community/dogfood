@@ -10,10 +10,12 @@
 
 
 
+
+
 @layer base {
     :root {
-        --color-accent: var(--color-sky-600);
-        --color-accent-content: var(--color-sky-600);
+        --color-accent: var(--color-zinc-800);
+        --color-accent-content: var(--color-zinc-800);
         --color-accent-foreground: var(--color-white);
     }
 
