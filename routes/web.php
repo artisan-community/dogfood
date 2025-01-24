@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => view('welcome'));
+Route::middleware(['guest'])->get('/', fn () => view('welcome'));
 
 Route::middleware([
     'auth:sanctum',
