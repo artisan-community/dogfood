@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6919d9f7cb894c7b2a386367838242fd",
+    "content-hash": "e3769270e1de85c0e46da4807e2262ef",
     "packages": [
         {
             "name": "artisan-build/bench",
-            "version": "dev-main",
+            "version": "dev-late-night-tinkering",
             "dist": {
                 "type": "path",
                 "url": "packages/bench",
@@ -123,7 +123,7 @@
         },
         {
             "name": "artisan-build/docsidian",
-            "version": "dev-main",
+            "version": "dev-late-night-tinkering",
             "dist": {
                 "type": "path",
                 "url": "packages/docsidian",
@@ -202,7 +202,7 @@
         },
         {
             "name": "artisan-build/flux-themes",
-            "version": "dev-main",
+            "version": "dev-late-night-tinkering",
             "dist": {
                 "type": "path",
                 "url": "packages/flux-themes",
@@ -281,7 +281,7 @@
         },
         {
             "name": "artisan-build/gh",
-            "version": "dev-main",
+            "version": "dev-late-night-tinkering",
             "dist": {
                 "type": "path",
                 "url": "packages/gh",
@@ -357,7 +357,7 @@
         },
         {
             "name": "artisan-build/kibble",
-            "version": "dev-main",
+            "version": "dev-late-night-tinkering",
             "dist": {
                 "type": "path",
                 "url": "packages/kibble",
@@ -435,7 +435,7 @@
         },
         {
             "name": "artisan-build/marketing",
-            "version": "dev-main",
+            "version": "dev-late-night-tinkering",
             "dist": {
                 "type": "path",
                 "url": "packages/marketing",
@@ -512,7 +512,7 @@
         },
         {
             "name": "artisan-build/packagist",
-            "version": "dev-main",
+            "version": "dev-late-night-tinkering",
             "dist": {
                 "type": "path",
                 "url": "packages/packagist",
@@ -589,7 +589,7 @@
         },
         {
             "name": "artisan-build/till",
-            "version": "dev-main",
+            "version": "dev-late-night-tinkering",
             "dist": {
                 "type": "path",
                 "url": "packages/till",
@@ -726,7 +726,7 @@
         },
         {
             "name": "artisan-build/verbstream",
-            "version": "dev-main",
+            "version": "dev-late-night-tinkering",
             "dist": {
                 "type": "path",
                 "url": "packages/verbstream",
@@ -9784,6 +9784,41 @@
                 "source": "https://github.com/doctrine/deprecations/tree/1.1.4"
             },
             "time": "2024-12-07T21:18:45+00:00"
+        },
+        {
+            "name": "driftingly/rector-laravel",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/driftingly/rector-laravel.git",
+                "reference": "f0e3a9e2c92ff760730d1af34fbdc43f51f3b868"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/driftingly/rector-laravel/zipball/f0e3a9e2c92ff760730d1af34fbdc43f51f3b868",
+                "reference": "f0e3a9e2c92ff760730d1af34fbdc43f51f3b868",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0",
+                "rector/rector": "^2.0"
+            },
+            "type": "rector-extension",
+            "autoload": {
+                "psr-4": {
+                    "RectorLaravel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Rector upgrades rules for Laravel Framework",
+            "support": {
+                "issues": "https://github.com/driftingly/rector-laravel/issues",
+                "source": "https://github.com/driftingly/rector-laravel/tree/2.0.2"
+            },
+            "time": "2025-01-17T18:07:03+00:00"
         },
         {
             "name": "fakerphp/faker",
