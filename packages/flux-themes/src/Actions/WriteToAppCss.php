@@ -17,11 +17,11 @@ class WriteToAppCss
         foreach ($properties as $key) {
             /** @var array $property */
             $property = $theme->$key;
-            $new .= "        --{$key}: var({$property['light']});\n";
+            $new .= '        --'.str_replace('_', '-', $key).": var({$property['light']});\n";
         }
         $new .= "    }\n\n    .dark {\n";
         foreach ($properties as $key) {
-            $new .= "        --{$key}: var({$property['light']});\n";
+            $new .= '        --'.str_replace('_', '-', $key).": var({$property['light']});\n";
         }
         $new .= "    }\n}";
 

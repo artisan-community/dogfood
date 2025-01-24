@@ -1,18 +1,21 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
-
+import forms from '@tailwindcss/forms';
+import typography from '@tailwindcss/typography';
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'selector',
     content: [
+		'./vendor/artisan-build/**/resources/**/*.blade.php',
+		'./vendor/livewire/flux/stubs/**/*.blade.php',
+		'./vendor/livewire/flux-pro/stubs/**/*.blade.php',
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
-        './resources/**/*.blade.php',
-        './resources/**/*.js',
-        './resources/**/*.vue',
+        './resources/views/**/*.blade.php',
     ],
     theme: {
         extend: {
-            colors: {
-                zinc: colors.gray,
+			colors: {
                 accent: {
                     DEFAULT: 'var(--color-accent)',
                     content: 'var(--color-accent-content)',
@@ -23,6 +26,5 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
-    },
-    plugins: [],
+    }
 };

@@ -58,7 +58,7 @@ class Pr extends BaseCommand
             $title ? '--title '.escapeshellarg($title) : null,
             $body ? '--body '.escapeshellarg($body) : null,
             $this->getOptions('create'),
-            implode(' ', array_map(fn ($opt) => escapeshellarg($opt), $options)),
+            implode(' ', array_map(fn ($opt) => escapeshellarg((string) $opt), $options)),
         ]));
 
         return $this->executeCommand($command);
@@ -76,7 +76,7 @@ class Pr extends BaseCommand
             $title ? '--title '.escapeshellarg($title) : null,
             $body ? '--body '.escapeshellarg($body) : null,
             $this->getOptions('edit'),
-            implode(' ', array_map(fn ($opt) => escapeshellarg($opt), $options)),
+            implode(' ', array_map(fn ($opt) => escapeshellarg((string) $opt), $options)),
         ]));
 
         return $this->executeCommand($command);

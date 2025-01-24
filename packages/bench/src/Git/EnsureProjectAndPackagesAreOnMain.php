@@ -9,8 +9,8 @@ use ArtisanBuild\Bench\Actions\GetProjectAndPackagePaths;
 class EnsureProjectAndPackagesAreOnMain
 {
     public function __construct(
-        private GetCurrentBranchName $currentBranchName,
-        private GetProjectAndPackagePaths $projectAndPackagePaths,
+        private readonly GetCurrentBranchName $currentBranchName,
+        private readonly GetProjectAndPackagePaths $projectAndPackagePaths,
     ) {}
 
     public function __invoke(): void

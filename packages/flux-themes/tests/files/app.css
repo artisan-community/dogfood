@@ -5,14 +5,14 @@
 
 @layer base {
     :root {
-        --color_accent: var(--color-red-500);
-        --color_accent_content: var(--color-red-600);
-        --color_accent_foreground: var(--color-white);
+        --color-accent: var(--color-red-500);
+        --color-accent-content: var(--color-red-600);
+        --color-accent-foreground: var(--color-white);
     }
 
     .dark {
-        --color_accent: var(--color-white);
-        --color_accent_content: var(--color-white);
-        --color_accent_foreground: var(--color-white);
+        --color-accent: var(--color-white);
+        --color-accent-content: var(--color-white);
+        --color-accent-foreground: var(--color-white);
     }
 }

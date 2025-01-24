@@ -6,12 +6,12 @@ use Illuminate\Support\Facades\File;
 
 uses(WithConsoleEvents::class);
 
-beforeEach(function () {
+beforeEach(function (): void {
     File::put(__DIR__.'/files/tailwind.config.js', File::get(__DIR__.'/files/tailwind.config.original.js'));
     File::put(__DIR__.'/files/app.css', File::get(__DIR__.'/files/app.css.original'));
 });
 
-it('sets up the a theme if a color is passed', function () {
+it('sets up the a theme if a color is passed', function (): void {
     $command = test()->artisan('flux-themes:set', [
         'color' => 'red',
         '--css_file' => __DIR__.'/files/app.css',
@@ -23,7 +23,7 @@ it('sets up the a theme if a color is passed', function () {
         ->assertExitCode(0);
 });
 
-it('sets up a theme when a color is selected', function () {
+it('sets up a theme when a color is selected', function (): void {
     $command = test()->artisan('flux-themes:set', [
         '--css_file' => __DIR__.'/files/app.css',
         '--tailwind_config' => __DIR__.'/files/tailwind.config.js',
@@ -36,7 +36,7 @@ it('sets up a theme when a color is selected', function () {
         ->assertExitCode(0);
 });
 
-it('fails if the color is not defined', function () {
+it('fails if the color is not defined', function (): void {
     $command = test()->artisan('flux-themes:set', [
         'color' => 'banana',
         '--css_file' => __DIR__.'/files/app.css',

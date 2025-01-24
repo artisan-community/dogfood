@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Process;
 
 class MakeCommit
 {
-    public function __construct(private GetProjectAndPackagePaths $projectAndPackagePaths) {}
+    public function __construct(private readonly GetProjectAndPackagePaths $projectAndPackagePaths) {}
 
     public function __invoke(string $message): void
     {

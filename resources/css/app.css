@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+@layer base {
+    :root {
+        --color-accent: var(--color-red-500);
+        --color-accent-content: var(--color-red-600);
+        --color-accent-foreground: var(--color-white);
+    }
+
+    .dark {
+        --color-accent: var(--color-red-500);
+        --color-accent-content: var(--color-red-400);
+        --color-accent-foreground: var(--color-white);
+    }
+}
