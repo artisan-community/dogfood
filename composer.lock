@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "791acd015492224ecce018f727be81c2",
+    "content-hash": "6919d9f7cb894c7b2a386367838242fd",
     "packages": [
         {
             "name": "artisan-build/bench",
@@ -434,6 +434,83 @@
             }
         },
         {
+            "name": "artisan-build/marketing",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/marketing",
+                "reference": "0167aa9260a687da1b7988d9b146e8030685e232"
+            },
+            "require": {
+                "illuminate/support": "^11.36"
+            },
+            "require-dev": {
+                "larastan/larastan": "^v3.0.2",
+                "laravel/pint": "^1.19.0",
+                "orchestra/testbench": "^v9.9.0",
+                "pestphp/pest": "^v3.7.1",
+                "phpstan/phpstan": "^2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ArtisanBuild\\Marketing\\Providers\\MarketingServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ArtisanBuild\\Marketing\\": "src/",
+                    "ArtisanBuild\\Marketing\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@composer run prepare"
+                ],
+                "clear": [
+                    "@php vendor/bin/testbench package:purge-bench --ansi"
+                ],
+                "prepare": [
+                    "@php vendor/bin/testbench package:discover --ansi"
+                ],
+                "build": [
+                    "@composer run prepare",
+                    "@php vendor/bin/testbench workbench:build --ansi"
+                ],
+                "start": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@composer run build",
+                    "@php vendor/bin/testbench serve"
+                ],
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "test-coverage": [
+                    "vendor/bin/pest --coverage"
+                ],
+                "lint": [
+                    "vendor/bin/pint"
+                ],
+                "stan": [
+                    "vendor/bin/phpstan analyse --memory-limit=-1"
+                ],
+                "ready": [
+                    "@composer lint",
+                    "@composer stan",
+                    "@composer test"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Tools to create marketing assets and landing pages",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "artisan-build/packagist",
             "version": "dev-main",
             "dist": {
@@ -516,7 +593,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/till",
-                "reference": "2efa9e3e474fbbc164b7a5c295d50198eb2d3c9a"
+                "reference": "4c0b9df38ebb0e12a0eda840b554d85e93f5db96"
             },
             "require": {
                 "illuminate/support": "^11.36"
