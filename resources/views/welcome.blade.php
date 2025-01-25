@@ -5,7 +5,7 @@
                 <div class="px-6 lg:px-0 lg:pt-4">
                     <div class="mx-auto max-w-2xl">
                         <div class="max-w-lg">
-                            <img class="h-11" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+                            <img class="h-11" src="{{ asset('img/dogfood.webp') }}" alt="Dogfood Logo">
                             <div class="mt-24 sm:mt-32 lg:mt-16">
                                 <a href="#" class="inline-flex space-x-6">
                                     <span class="rounded-full bg-indigo-600/10 px-3 py-1 text-sm/6 font-semibold text-indigo-600 ring-1 ring-inset ring-indigo-600/10">What's new</span>
