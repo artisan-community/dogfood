@@ -8,7 +8,7 @@
     "packages": [
         {
             "name": "artisan-build/bench",
-            "version": "dev-late-night-tinkering",
+            "version": "dev-marketing-setup",
             "dist": {
                 "type": "path",
                 "url": "packages/bench",
@@ -123,7 +123,7 @@
         },
         {
             "name": "artisan-build/docsidian",
-            "version": "dev-late-night-tinkering",
+            "version": "dev-marketing-setup",
             "dist": {
                 "type": "path",
                 "url": "packages/docsidian",
@@ -202,7 +202,7 @@
         },
         {
             "name": "artisan-build/flux-themes",
-            "version": "dev-late-night-tinkering",
+            "version": "dev-marketing-setup",
             "dist": {
                 "type": "path",
                 "url": "packages/flux-themes",
@@ -281,7 +281,7 @@
         },
         {
             "name": "artisan-build/gh",
-            "version": "dev-late-night-tinkering",
+            "version": "dev-marketing-setup",
             "dist": {
                 "type": "path",
                 "url": "packages/gh",
@@ -357,7 +357,7 @@
         },
         {
             "name": "artisan-build/kibble",
-            "version": "dev-late-night-tinkering",
+            "version": "dev-marketing-setup",
             "dist": {
                 "type": "path",
                 "url": "packages/kibble",
@@ -435,7 +435,7 @@
         },
         {
             "name": "artisan-build/marketing",
-            "version": "dev-late-night-tinkering",
+            "version": "dev-marketing-setup",
             "dist": {
                 "type": "path",
                 "url": "packages/marketing",
@@ -512,7 +512,7 @@
         },
         {
             "name": "artisan-build/packagist",
-            "version": "dev-late-night-tinkering",
+            "version": "dev-marketing-setup",
             "dist": {
                 "type": "path",
                 "url": "packages/packagist",
@@ -589,7 +589,7 @@
         },
         {
             "name": "artisan-build/till",
-            "version": "dev-late-night-tinkering",
+            "version": "dev-marketing-setup",
             "dist": {
                 "type": "path",
                 "url": "packages/till",
@@ -726,7 +726,7 @@
         },
         {
             "name": "artisan-build/verbstream",
-            "version": "dev-late-night-tinkering",
+            "version": "dev-marketing-setup",
             "dist": {
                 "type": "path",
                 "url": "packages/verbstream",
@@ -9946,16 +9946,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.16.0",
+            "version": "2.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "befcdc0e5dce67252aa6322d82424be928214fa2"
+                "reference": "075bc0c26631110584175de6523ab3f1652eb28e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/befcdc0e5dce67252aa6322d82424be928214fa2",
-                "reference": "befcdc0e5dce67252aa6322d82424be928214fa2",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/075bc0c26631110584175de6523ab3f1652eb28e",
+                "reference": "075bc0c26631110584175de6523ab3f1652eb28e",
                 "shasum": ""
             },
             "require": {
@@ -10005,7 +10005,7 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.16.0"
+                "source": "https://github.com/filp/whoops/tree/2.17.0"
             },
             "funding": [
                 {
@@ -10013,7 +10013,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-09-25T12:00:00+00:00"
+            "time": "2025-01-25T12:00:00+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
