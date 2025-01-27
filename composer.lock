@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21b4b98283c2bd164e21e42c6f2ba475",
+    "content-hash": "a564621178be730525d3307384c6f9fe",
     "packages": [
         {
             "name": "artisan-build/bench",
-            "version": "dev-marketing-setup",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/bench",
@@ -123,7 +123,7 @@
         },
         {
             "name": "artisan-build/docsidian",
-            "version": "dev-marketing-setup",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/docsidian",
@@ -202,7 +202,7 @@
         },
         {
             "name": "artisan-build/flux-themes",
-            "version": "dev-marketing-setup",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/flux-themes",
@@ -281,7 +281,7 @@
         },
         {
             "name": "artisan-build/gh",
-            "version": "dev-marketing-setup",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/gh",
@@ -357,7 +357,7 @@
         },
         {
             "name": "artisan-build/kibble",
-            "version": "dev-marketing-setup",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/kibble",
@@ -435,7 +435,7 @@
         },
         {
             "name": "artisan-build/marketing",
-            "version": "dev-marketing-setup",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/marketing",
@@ -511,8 +511,85 @@
             }
         },
         {
+            "name": "artisan-build/marketing-mailcoach",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/marketing-mailcoach",
+                "reference": "2b089c7b712686d515bc3ec5e7ae1dfbf7b416be"
+            },
+            "require": {
+                "illuminate/support": "^11.36"
+            },
+            "require-dev": {
+                "larastan/larastan": "^v3.0.2",
+                "laravel/pint": "^1.19.0",
+                "orchestra/testbench": "^v9.9.0",
+                "pestphp/pest": "^v3.7.1",
+                "phpstan/phpstan": "^2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ArtisanBuild\\MarketingMailcoach\\Providers\\MarketingMailcoachServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ArtisanBuild\\MarketingMailcoach\\": "src/",
+                    "ArtisanBuild\\MarketingMailcoach\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@composer run prepare"
+                ],
+                "clear": [
+                    "@php vendor/bin/testbench package:purge-bench --ansi"
+                ],
+                "prepare": [
+                    "@php vendor/bin/testbench package:discover --ansi"
+                ],
+                "build": [
+                    "@composer run prepare",
+                    "@php vendor/bin/testbench workbench:build --ansi"
+                ],
+                "start": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@composer run build",
+                    "@php vendor/bin/testbench serve"
+                ],
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "test-coverage": [
+                    "vendor/bin/pest --coverage"
+                ],
+                "lint": [
+                    "vendor/bin/pint"
+                ],
+                "stan": [
+                    "vendor/bin/phpstan analyse --memory-limit=-1"
+                ],
+                "ready": [
+                    "@composer lint",
+                    "@composer stan",
+                    "@composer test"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Mailcoach driver for our marketing package",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "artisan-build/packagist",
-            "version": "dev-marketing-setup",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/packagist",
@@ -589,7 +666,7 @@
         },
         {
             "name": "artisan-build/till",
-            "version": "dev-marketing-setup",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/till",
@@ -726,7 +803,7 @@
         },
         {
             "name": "artisan-build/verbstream",
-            "version": "dev-marketing-setup",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/verbstream",
