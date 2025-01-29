@@ -4,7 +4,8 @@
 	"type": "library",
 	"license": "MIT",
 	"require": {
-        "illuminate/support": "^11.36"
+        "illuminate/support": "^11.36",
+        "saloonphp/saloon": "^3.0"
     },
     "require-dev": {
         "larastan/larastan": "^v3.0.2",
