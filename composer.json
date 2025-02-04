@@ -10,6 +10,7 @@
     "license": "proprietary",
     "require": {
         "php": "^8.3",
+        "artisan-build/adverbs": "*",
         "artisan-build/bench": "*",
         "artisan-build/docsidian": "*",
         "artisan-build/flux-themes": "*",

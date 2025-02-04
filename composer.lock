@@ -4,11 +4,88 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb4502f44c80174b8a9ab859bf1eb4d1",
+    "content-hash": "606871dabbfac22a6a2502ba7204c4cc",
     "packages": [
         {
+            "name": "artisan-build/adverbs",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/adverbs",
+                "reference": "bd34d25aa6862d5fd0c6276917249ea09296a54d"
+            },
+            "require": {
+                "illuminate/support": "^11.36"
+            },
+            "require-dev": {
+                "larastan/larastan": "^v3.0.2",
+                "laravel/pint": "^1.19.0",
+                "orchestra/testbench": "^v9.9.0",
+                "pestphp/pest": "^v3.7.1",
+                "phpstan/phpstan": "^2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ArtisanBuild\\Adverbs\\Providers\\AdverbsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ArtisanBuild\\Adverbs\\": "src/",
+                    "ArtisanBuild\\Adverbs\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@composer run prepare"
+                ],
+                "clear": [
+                    "@php vendor/bin/testbench package:purge-bench --ansi"
+                ],
+                "prepare": [
+                    "@php vendor/bin/testbench package:discover --ansi"
+                ],
+                "build": [
+                    "@composer run prepare",
+                    "@php vendor/bin/testbench workbench:build --ansi"
+                ],
+                "start": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@composer run build",
+                    "@php vendor/bin/testbench serve"
+                ],
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "test-coverage": [
+                    "vendor/bin/pest --coverage"
+                ],
+                "lint": [
+                    "vendor/bin/pint"
+                ],
+                "stan": [
+                    "vendor/bin/phpstan analyse --memory-limit=-1"
+                ],
+                "ready": [
+                    "@composer lint",
+                    "@composer stan",
+                    "@composer test"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A collection of traits, attributes, and helpers that make us more productive when using Verbs ",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "artisan-build/bench",
-            "version": "dev-back-to-theme-package",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/bench",
@@ -123,7 +200,7 @@
         },
         {
             "name": "artisan-build/docsidian",
-            "version": "dev-back-to-theme-package",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/docsidian",
@@ -202,7 +279,7 @@
         },
         {
             "name": "artisan-build/flux-themes",
-            "version": "dev-back-to-theme-package",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/flux-themes",
@@ -281,7 +358,7 @@
         },
         {
             "name": "artisan-build/gh",
-            "version": "dev-back-to-theme-package",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/gh",
@@ -357,10 +434,10 @@
         },
         {
             "name": "artisan-build/kibble",
-            "version": "dev-back-to-theme-package",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
-                "url": "packages/kibble",
+                "url": "packages/kibble-main",
                 "reference": "2e0d6dcbd97fceea2bdbae60600d876755e3f51e"
             },
             "require": {
@@ -435,7 +512,7 @@
         },
         {
             "name": "artisan-build/marketing",
-            "version": "dev-back-to-theme-package",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/marketing",
@@ -512,7 +589,7 @@
         },
         {
             "name": "artisan-build/marketing-mailcoach",
-            "version": "dev-back-to-theme-package",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/marketing-mailcoach",
@@ -589,7 +666,7 @@
         },
         {
             "name": "artisan-build/packagist",
-            "version": "dev-back-to-theme-package",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/packagist",
@@ -667,7 +744,7 @@
         },
         {
             "name": "artisan-build/till",
-            "version": "dev-back-to-theme-package",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/till",
@@ -804,7 +881,7 @@
         },
         {
             "name": "artisan-build/verbstream",
-            "version": "dev-back-to-theme-package",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "packages/verbstream",
