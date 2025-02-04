@@ -13,6 +13,7 @@
         "artisan-build/adverbs": "*",
         "artisan-build/bench": "*",
         "artisan-build/docsidian": "*",
+        "artisan-build/fat-enums": "*",
         "artisan-build/flux-themes": "*",
         "artisan-build/gh": "*",
         "artisan-build/kibble": "*",
