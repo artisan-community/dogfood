@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtisanBuild\Verbstream\Adverbs;
+namespace ArtisanBuild\Adverbs\EventBus;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -12,6 +12,5 @@ class VerbsEvent
     use InteractsWithSockets;
     use SerializesModels;
 
-    public function __construct(public string $event, public array $properties) {
-    }
+    public function __construct(public string $event, public array $properties) {}
 }

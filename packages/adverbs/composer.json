@@ -1,9 +1,10 @@
 {
 	"name": "artisan-build/adverbs",
-	"description": "A collection of traits, attributes, and helpers that make us more productive when using Verbs ",
+	"description": "Tools and utilities to make us more productive when using Verbs",
 	"type": "library",
 	"license": "MIT",
 	"require": {
+        "calebporzio/sushi": "^2.0",
         "illuminate/support": "^11.36"
     },
     "require-dev": {

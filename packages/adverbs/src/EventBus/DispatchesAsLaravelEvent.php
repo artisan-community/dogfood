@@ -1,10 +1,9 @@
 <?php
 
-namespace ArtisanBuild\Verbstream\Adverbs;
+namespace ArtisanBuild\Adverbs\EventBus;
 
 trait DispatchesAsLaravelEvent
 {
-
     public function fired()
     {
         VerbsEvent::dispatch(static::class, (array) $this);
