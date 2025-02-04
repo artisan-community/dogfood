@@ -2,9 +2,6 @@
 
 namespace App\Models;
 
-use ArtisanBuild\Verbstream\Events\TeamCreated;
-use ArtisanBuild\Verbstream\Events\TeamDeleted;
-use ArtisanBuild\Verbstream\Events\TeamUpdated;
 use ArtisanBuild\Verbstream\Team as JetstreamTeam;
 use Database\Factories\TeamFactory;
 use Eloquent;
@@ -54,17 +51,6 @@ class Team extends JetstreamTeam
     protected $fillable = [
         'name',
         'personal_team',
-    ];
-
-    /**
-     * The event map for the model.
-     *
-     * @var array<string, class-string>
-     */
-    protected $dispatchesEvents = [
-        'created' => TeamCreated::class,
-        'updated' => TeamUpdated::class,
-        'deleted' => TeamDeleted::class,
     ];
 
     /**
