@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Listeners\VerbsEventListener;
-use ArtisanBuild\Verbstream\Adverbs\VerbsEvent;
 use Illuminate\Support\ServiceProvider;
 use Override;
 
@@ -21,8 +19,5 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap services.
      */
-    public function boot(): void
-    {
-
-    }
+    public function boot(): void {}
 }

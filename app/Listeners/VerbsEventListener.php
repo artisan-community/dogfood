@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use ArtisanBuild\Verbstream\Adverbs\VerbsEvent;
+use ArtisanBuild\Adverbs\EventBus\VerbsEvent;
 
 class VerbsEventListener
 {

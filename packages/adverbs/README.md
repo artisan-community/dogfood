@@ -1,6 +1,6 @@
 # Adverbs
 
-A collection of traits, attributes, and helpers that make us more productive when using Verbs 
+Tools and utilities to make us more productive when using Verbs
 
 > [!WARNING]  
 > This package is currently under active development, and we have not yet released a major version. Once a 0.* version
