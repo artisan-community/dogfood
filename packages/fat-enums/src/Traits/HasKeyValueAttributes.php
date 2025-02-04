@@ -16,7 +16,7 @@ trait HasKeyValueAttributes
         $data = (new ReflectionClassConstant($enum::class, $enum->name))
             ->getAttributes(WithData::class)[0]->newInstance()->data;
 
-        if (null === $key) {
+        if ($key === null) {
             return $data;
         }
 

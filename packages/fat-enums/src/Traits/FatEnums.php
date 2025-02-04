@@ -10,7 +10,7 @@ trait FatEnums
     {
         assert($num > 0);
 
-        return 1 === $num
+        return $num === 1
             ? collect(static::cases())->shuffle()->first()
             : collect(static::cases())->shuffle()->take($num)->toArray();
     }
