@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use ArtisanBuild\FatEnums\Providers\FatEnumsServiceProvider;
-use ArtisanBuild\FatEnums\TestEnums\ModelBackedTestEnum;
+use ArtisanBuild\FatEnums\Tests\Fixtures\ModelBackedTestEnum;
 use ArtisanBuild\FatEnums\Traits\DatabaseRecordsEnum;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 

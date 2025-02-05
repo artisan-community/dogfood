@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ArtisanBuild\FatEnums\TestEnums\FatTestEnum;
+use ArtisanBuild\FatEnums\Tests\Fixtures\FatTestEnum;
 
 it('throws an exception when the number of random cases requested is not positive', function (): void {
     expect(fn () => FatTestEnum::random(0))->toThrow(

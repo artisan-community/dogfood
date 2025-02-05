@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ArtisanBuild\FatEnums\TestEnums\UnbackedEnum;
+use ArtisanBuild\FatEnums\Tests\Fixtures\UnbackedEnum;
 
 it('can get a case by name', function (): void {
     expect(UnbackedEnum::tryFrom('Yes'))->toBe(UnbackedEnum::Yes);

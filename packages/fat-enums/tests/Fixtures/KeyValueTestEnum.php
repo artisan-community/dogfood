@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ArtisanBuild\FatEnums\TestEnums;
+namespace ArtisanBuild\FatEnums\Tests\Fixtures;
 
 use ArtisanBuild\FatEnums\Attributes\WithData;
 use ArtisanBuild\FatEnums\Traits\HasKeyValueAttributes;

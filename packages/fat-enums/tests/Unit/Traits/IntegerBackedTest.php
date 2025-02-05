@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ArtisanBuild\FatEnums\TestEnums\IntegerBackedEnum;
+use ArtisanBuild\FatEnums\Tests\Fixtures\IntegerBackedEnum;
 use Illuminate\Support\Collection;
 
 describe('Integer backed enum trait methods', function (): void {

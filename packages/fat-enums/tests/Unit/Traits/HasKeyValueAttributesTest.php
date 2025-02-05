@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use ArtisanBuild\FatEnums\Exceptions\MissingDataAttributeException;
 use ArtisanBuild\FatEnums\Exceptions\MissingDataKeyException;
-use ArtisanBuild\FatEnums\TestEnums\KeyValueTestEnum;
+use ArtisanBuild\FatEnums\Tests\Fixtures\KeyValueTestEnum;
 
 describe('Case With Data', function (): void {
     it('can get a value by key', function (): void {

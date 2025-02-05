@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ArtisanBuild\FatEnums\TestEnums;
+namespace ArtisanBuild\FatEnums\Tests\Fixtures;
 
 enum StringBackedEnum: string
 {
