@@ -88,7 +88,7 @@ trait HasStateMachine
         if (is_null($type)) {
             if ($allow_null) {
                 return null;
-            } else {  
+            } else {
                 throw new InvalidArgumentException("Property {$property} does not have a type defined on ".static::class);
             }
         }
@@ -169,7 +169,7 @@ trait HasStateMachine
                 collect(class_implements($enum))->doesntContain(StateMachine::class)
             ) {
                 throw new InvalidArgumentException(sprintf(
-                    "%s does not implement %s",
+                    '%s does not implement %s',
                     $enum::class,
                     StateMachine::class,
                 ));
