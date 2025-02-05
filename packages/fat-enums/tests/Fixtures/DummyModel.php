@@ -12,7 +12,7 @@ class DummyModel extends Model
     use HasStateMachine;
     use \Sushi\Sushi;
 
-    protected $state_machines = [];
+    protected array $state_machines = [];
 
     protected $rows = [
         ['id' => 1111, 'name' => 'Foo'],
