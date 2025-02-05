@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace ArtisanBuild\FatEnums\Tests\Fixtures;
 
-use ArtisanBuild\FatEnums\Tests\Fixtures\DummyModel;
 use ArtisanBuild\FatEnums\Traits\DatabaseRecordsEnum;
 
 enum ModelBackedTestEnum: int
