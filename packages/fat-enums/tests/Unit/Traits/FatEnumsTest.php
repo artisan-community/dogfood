@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use ArtisanBuild\FatEnums\TestEnums\FatTestEnum;
-use InvalidArgumentException;
 
 it('throws an exception when the number of random cases requested is not positive', function (): void {
     expect(fn () => FatTestEnum::random(0))->toThrow(
