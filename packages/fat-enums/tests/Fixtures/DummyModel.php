@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace ArtisanBuild\FatEnums\Tests\Fixtures;
 
-use ArtisanBuild\FatEnums\StateMachine\HasStateMachine;
+use ArtisanBuild\FatEnums\StateMachine\ModelHasStateMachine;
 use Illuminate\Database\Eloquent\Model;
 
 class DummyModel extends Model
 {
-    use HasStateMachine;
+    use ModelHasStateMachine;
     use \Sushi\Sushi;
 
     protected array $state_machines = [];
