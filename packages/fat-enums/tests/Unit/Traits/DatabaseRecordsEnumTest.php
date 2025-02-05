@@ -42,30 +42,38 @@ it('throws an exception if the model name constant is not a subclass of Model', 
         ->toThrow(Exception::class, 'ModelName constant must be a subclass of Illuminate\Database\Eloquent\Model');
 });
 
-enum UnbackedTestEnum {
+enum UnbackedTestEnum
+{
     use DatabaseRecordsEnum;
     case Foo;
 }
 
-enum NoConstantTestEnum: int {
+enum NoConstantTestEnum: int
+{
     use DatabaseRecordsEnum;
     case Foo = 1111;
 }
 
-enum NotStringConstantTestEnum: int {
+enum NotStringConstantTestEnum: int
+{
     use DatabaseRecordsEnum;
+
     public const ModelName = 1111;
     case Foo = 1111;
 }
 
-enum NotClassConstantTestEnum: int {
+enum NotClassConstantTestEnum: int
+{
     use DatabaseRecordsEnum;
+
     public const ModelName = 'NotAClass';
     case Foo = 1111;
 }
 
-enum NotModelConstantTestEnum: int {
+enum NotModelConstantTestEnum: int
+{
     use DatabaseRecordsEnum;
+
     public const ModelName = FatEnumsServiceProvider::class;
     case Foo = 1111;
 }
