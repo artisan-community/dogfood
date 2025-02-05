@@ -8,53 +8,52 @@ use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
 use ReflectionClass;
 use ReflectionClassConstant;
-use ReflectionProperty;
+use ReflectionNamedType;
 
 trait HasStateMachine
 {
     public static function bootHasStateMachine(): void
     {
-        if (! is_a(static::class, Model::class, true)) {
+        // @phpstan-ignore-next-line
+        if (! is_subclass_of(static::class, Model::class, true)) {
             throw new Exception('The HasStateMachine::bootHasStateMachine() method can only be used on Eloquent models.');
         }
 
         if (
             ! property_exists(static::class, 'state_machines')
-            || ! (new ReflectionProperty(static::class, 'state_machines'))->getType()?->getName() === 'array'
+            || self::getNonUnionNonIntersectionType('state_machines', allow_null: true) !== 'array'
         ) {
             throw new Exception('The HasStateMachine::bootHasStateMachine() method can only be used on models that define a $state_machines array property.');
         }
 
         static::updating(function (Model $model): void {
+            $casts = $model->getCasts();
+
             foreach ($model->getDirty() as $attribute => $value) {
                 if (in_array($attribute, $model->state_machines)) {
                     // Make sure the attribute exists in $casts array
-                    if (! array_key_exists($attribute, $model->casts)) {
+                    if (! array_key_exists($attribute, $casts)) {
                         throw new InvalidArgumentException("{$attribute} is not a valid cast on ".$model::class);
                     }
 
                     // Make sure it's an enum
-                    if (! enum_exists($model->casts[$attribute])) {
-                        throw new InvalidArgumentException("{$model->casts[$attribute]} is not a valid enum.");
+                    if (! enum_exists($casts[$attribute])) {
+                        throw new InvalidArgumentException("{$casts[$attribute]} is not a valid enum.");
                     }
 
                     // Make sure it implements the StateMachine contract
-                    if (! in_array(StateMachine::class, class_implements($model->casts[$attribute]))) {
-                        throw new InvalidArgumentException("{$model->casts[$attribute]} does not implement ".StateMachine::class);
+                    if (! in_array(StateMachine::class, class_implements($casts[$attribute]))) {
+                        throw new InvalidArgumentException("{$casts[$attribute]} does not implement ".StateMachine::class);
                     }
 
                     if (is_string($value) || is_int($value)) {
-                        // string and int BackedEnum
-                        $value = $model->casts[$attribute]::from($value);
+                        $value = is_a($casts[$attribute], BackedEnum::class, true)
+                            ? $casts[$attribute]::from($value)
+                            : $casts[$attribute]::{$value};
                     }
-
-                    // This should be structured in a way to support
-                    // UnitEnum as well, but for now we're  going to
-                    // assume it's a BackedEnum.
 
                     $original = $model->getOriginal($attribute);
 
-                    // $value->transitionFrom($original);
                     if (! $original->canTransitionTo($value)) {
                         throw new InvalidStateTransition(sprintf(
                             InvalidStateTransition::MESSAGE,
@@ -62,7 +61,7 @@ trait HasStateMachine
                             $value->value,
                             $model::class,
                             $attribute,
-                            $model->casts[$attribute],
+                            $casts[$attribute],
                         ));
                     }
                 }
@@ -77,21 +76,37 @@ trait HasStateMachine
         }
     }
 
+    /**
+     * @return enum-string|null
+     */
+    private static function getNonUnionNonIntersectionType(string $property, $allow_null = false): ?string
+    {
+        $type = (new ReflectionClass(static::class))
+            ->getProperty($property)
+            ->getType();
+
+        if (is_null($type)) {
+            if ($allow_null) {
+                return null;
+            } else {  
+                throw new InvalidArgumentException("Property {$property} does not have a type defined on ".static::class);
+            }
+        }
+
+        if (! $type instanceof ReflectionNamedType) {
+            throw new InvalidArgumentException("Property {$property} cannot be a union or intersection type on ".static::class);
+        }
+
+        return $type->getName();
+    }
+
     private static function validateStateMachine(string $property): void
     {
         if (! (new ReflectionClass(static::class))->hasProperty($property)) {
             throw new InvalidArgumentException("Property {$property} does not exist on ".static::class);
         }
 
-        $type = (new ReflectionClass(static::class))
-            ->getProperty($property)
-            ->getType();
-
-        if (is_null($type)) {
-            throw new InvalidArgumentException("Property {$property} does not have a type defined on ".static::class);
-        }
-
-        $type = $type->getName();
+        $type = self::getNonUnionNonIntersectionType($property);
 
         if (! enum_exists($type)) {
             throw new InvalidArgumentException("Property {$property} is not an enum on ".static::class);
@@ -108,12 +123,9 @@ trait HasStateMachine
 
     public static function getDefaultState(string $property): BackedEnum
     {
-        static::validateStateMachine($property);
+        self::validateStateMachine($property);
 
-        $type = (new ReflectionClass(static::class))
-            ->getProperty($property)
-            ->getType()
-            ->getName();
+        $type = self::getNonUnionNonIntersectionType($property);
 
         return $type::DEFAULT;
     }
@@ -144,7 +156,7 @@ trait HasStateMachine
         BackedEnum $source,
         BackedEnum $destination,
     ): bool {
-        static::validateStateMachine($property);
+        self::validateStateMachine($property);
 
         assert($source instanceof StateMachine);
         assert($destination instanceof StateMachine);
@@ -153,8 +165,14 @@ trait HasStateMachine
         // it helps with our internal type checking, it doesn't
         // actually provided the needed safety in production.
         foreach ([$source, $destination] as $enum) {
-            if (! class_implements($enum, StateMachine::class)) {
-                throw new InvalidArgumentException("{$enum->class} does not implement ".StateMachine::class);
+            if (
+                collect(class_implements($enum))->doesntContain(StateMachine::class)
+            ) {
+                throw new InvalidArgumentException(sprintf(
+                    "%s does not implement %s",
+                    $enum::class,
+                    StateMachine::class,
+                ));
             }
         }
 
@@ -163,7 +181,7 @@ trait HasStateMachine
 
     public function transitionTo(string $property, mixed $destination): self
     {
-        static::validateStateMachine($property);
+        self::validateStateMachine($property);
 
         $source = $this->{$property};
 
@@ -184,12 +202,9 @@ trait HasStateMachine
 
     public static function serializeStateMachine(string $property): array
     {
-        static::validateStateMachine($property);
+        self::validateStateMachine($property);
 
-        $enum = (new ReflectionClass(static::class))
-            ->getProperty($property)
-            ->getType()
-            ->getName();
+        $enum = self::getNonUnionNonIntersectionType($property);
 
         $cases = collect($enum::cases());
 
@@ -203,10 +218,12 @@ trait HasStateMachine
         $config = [
             'Default State' => $enum::DEFAULT->value,
             'Final States' => $cases
-                ->filter(fn ($case) => (new ReflectionClassConstant($enum, $case->name))
+                ->mapWithKeys(fn ($case) => [$case->value => $case])
+                ->map(fn ($case) => (new ReflectionClassConstant($enum, $case->name))
                     ->getAttributes(FinalState::class)
                 )
-                ->map(fn ($case) => $case->value)
+                ->reject(fn ($attributes) => empty($attributes))
+                ->keys()
                 ->sort($caseValueSorter)
                 ->values()
                 ->toArray(),
@@ -218,7 +235,7 @@ trait HasStateMachine
                 ->reject(fn ($attributes) => empty($attributes))
                 ->map(fn ($attributes) => $attributes[0]->newInstance()->destinations)
                 ->map(fn ($destinations) => collect($destinations)
-                    ->map(fn ($destination) => $destination->value)
+                    ->map(fn ($destination) => $destination->value ?? $destination->name)
                     ->sort($caseValueSorter)
                     ->values()
                     ->toArray()
