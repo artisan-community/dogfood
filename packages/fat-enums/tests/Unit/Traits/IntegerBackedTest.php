@@ -9,7 +9,8 @@ describe('Integer backed enum trait methods', function (): void {
     it('finds correct values for eq', function (): void {
         expect(IntegerBackedEnum::Eight->eq())
             ->toBeInstanceOf(Collection::class)
-            ->toContain(IntegerBackedEnum::Eight);
+            ->toContain(IntegerBackedEnum::Eight)
+            ->toHaveLength(1);
     });
 
     it('finds the correct values for gt', function (): void {
