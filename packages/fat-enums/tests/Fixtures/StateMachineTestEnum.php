@@ -9,14 +9,12 @@ use ArtisanBuild\FatEnums\StateMachine\CanTransitionToSelf;
 use ArtisanBuild\FatEnums\StateMachine\FinalState;
 use ArtisanBuild\FatEnums\StateMachine\IsStateMachine;
 use ArtisanBuild\FatEnums\StateMachine\SerializesForNova;
-use ArtisanBuild\FatEnums\StateMachine\SerializesForVerbs;
 use ArtisanBuild\FatEnums\StateMachine\StateMachine;
 
 enum StateMachineTestEnum: string implements StateMachine
 {
     use IsStateMachine;
     use SerializesForNova;
-    use SerializesForVerbs;
 
     const DEFAULT = self::START;
 
