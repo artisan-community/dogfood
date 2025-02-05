@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ArtisanBuild\FatEnums\Tests\Fixtures\Models;
+namespace ArtisanBuild\FatEnums\Tests\Fixtures;
 
 use Illuminate\Database\Eloquent\Model;
 
