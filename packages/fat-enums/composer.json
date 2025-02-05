@@ -7,6 +7,7 @@
         "illuminate/support": "^11.36"
     },
     "require-dev": {
+        "calebporzio/sushi": "^2.5.2",
         "larastan/larastan": "^v3.0.2",
         "orchestra/testbench": "^v9.9.0",
         "pestphp/pest": "^v3.7.1",

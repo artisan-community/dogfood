@@ -8,7 +8,7 @@
     "packages": [
         {
             "name": "artisan-build/adverbs",
-            "version": "dev-main",
+            "version": "dev-packages/fat-enums",
             "dist": {
                 "type": "path",
                 "url": "packages/adverbs",
@@ -86,7 +86,7 @@
         },
         {
             "name": "artisan-build/bench",
-            "version": "dev-main",
+            "version": "dev-packages/fat-enums",
             "dist": {
                 "type": "path",
                 "url": "packages/bench",
@@ -201,7 +201,7 @@
         },
         {
             "name": "artisan-build/docsidian",
-            "version": "dev-main",
+            "version": "dev-packages/fat-enums",
             "dist": {
                 "type": "path",
                 "url": "packages/docsidian",
@@ -280,16 +280,17 @@
         },
         {
             "name": "artisan-build/fat-enums",
-            "version": "dev-main",
+            "version": "dev-packages/fat-enums",
             "dist": {
                 "type": "path",
                 "url": "packages/fat-enums",
-                "reference": "c69bc537fc8079a06cb7821383a24fba45c2470c"
+                "reference": "6e8cef12e9a6aba0c709aeb57b597cafaefbcfe5"
             },
             "require": {
                 "illuminate/support": "^11.36"
             },
             "require-dev": {
+                "calebporzio/sushi": "^2.5.2",
                 "larastan/larastan": "^v3.0.2",
                 "laravel/pint": "^1.19.0",
                 "orchestra/testbench": "^v9.9.0",
@@ -357,7 +358,7 @@
         },
         {
             "name": "artisan-build/flux-themes",
-            "version": "dev-main",
+            "version": "dev-packages/fat-enums",
             "dist": {
                 "type": "path",
                 "url": "packages/flux-themes",
@@ -436,7 +437,7 @@
         },
         {
             "name": "artisan-build/gh",
-            "version": "dev-main",
+            "version": "dev-packages/fat-enums",
             "dist": {
                 "type": "path",
                 "url": "packages/gh",
@@ -512,7 +513,7 @@
         },
         {
             "name": "artisan-build/kibble",
-            "version": "dev-main",
+            "version": "dev-packages/fat-enums",
             "dist": {
                 "type": "path",
                 "url": "packages/kibble",
@@ -590,7 +591,7 @@
         },
         {
             "name": "artisan-build/marketing",
-            "version": "dev-main",
+            "version": "dev-packages/fat-enums",
             "dist": {
                 "type": "path",
                 "url": "packages/marketing",
@@ -667,7 +668,7 @@
         },
         {
             "name": "artisan-build/marketing-mailcoach",
-            "version": "dev-main",
+            "version": "dev-packages/fat-enums",
             "dist": {
                 "type": "path",
                 "url": "packages/marketing-mailcoach",
@@ -744,7 +745,7 @@
         },
         {
             "name": "artisan-build/packagist",
-            "version": "dev-main",
+            "version": "dev-packages/fat-enums",
             "dist": {
                 "type": "path",
                 "url": "packages/packagist",
@@ -822,7 +823,7 @@
         },
         {
             "name": "artisan-build/till",
-            "version": "dev-main",
+            "version": "dev-packages/fat-enums",
             "dist": {
                 "type": "path",
                 "url": "packages/till",
@@ -959,7 +960,7 @@
         },
         {
             "name": "artisan-build/verbstream",
-            "version": "dev-main",
+            "version": "dev-packages/fat-enums",
             "dist": {
                 "type": "path",
                 "url": "packages/verbstream",
